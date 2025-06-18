@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: terraform destroy command reference
 description: >-
   The `terraform destroy` command deprovisions all objects managed by a Terraform
@@ -6,7 +13,7 @@ description: >-
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -52,7 +59,7 @@ Terraform v0.15.2 and later. For earlier versions, you _must_ use
 
 ### Target a specific resource
 
-You can use the `-target` option to destroy a particular resource and its dependencies. For example, if your Terraform configuration contained a `aws_instance` resource with the label `example`, you could destroy that resource with the following command. 
+You can use the `-target` option to destroy a particular resource and its dependencies. For example, if your Terraform configuration contained a `aws_instance` resource with the label `example`, you could destroy that resource with the following command.
 
 ```
 terraform destroy -target aws_instance.example

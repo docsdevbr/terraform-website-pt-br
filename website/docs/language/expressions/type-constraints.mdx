@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Type Constraints - Configuration Language
 description: >-
   Learn how to use type constraints to validate user inputs to modules and
@@ -6,7 +13,7 @@ description: >-
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -95,17 +102,17 @@ The three kinds of collection type in the Terraform language are:
   compatibility with older configurations; for new code, we recommend using
   the full form.
 
-  You can use the following characters to define maps: 
-      - `{}` 
-      - `:` 
-      - `=` 
-  For example, `{ "foo": "bar", "bar": "baz" }` and  `{ foo = "bar", bar = "baz" }` define the same map. 
+  You can use the following characters to define maps:
+      - `{}`
+      - `:`
+      - `=`
+  For example, `{ "foo": "bar", "bar": "baz" }` and  `{ foo = "bar", bar = "baz" }` define the same map.
   You must place map keys in quotation marks when a key starts with a number, contains spaces, or contains special characters. Otherwise, you can omit them.
-  You must place commas between keys-value pairs in single-line maps. 
+  You must place commas between keys-value pairs in single-line maps.
   You can place key-value pairs in multi-line maps on new lines.
 
   -> **Note:** Although colons are valid delimiters between keys and values, `terraform fmt` ignores them. In contrast, `terraform fmt` attempts to vertically align equals signs.
-  
+
 * `set(...)`: a collection of unique values that do not have any secondary
   identifiers or ordering.
 

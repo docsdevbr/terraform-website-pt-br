@@ -1,10 +1,17 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: 'Backend Type: s3'
 description: Terraform can store and lock state remotely in Amazon S3.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -289,7 +296,7 @@ The argument `assume_role` contains the following arguments:
 * `duration` - (Optional) The duration individual credentials will be valid.
   Credentials are automatically renewed up to the maximum defined by the AWS account.
   Specified using the format `<hours>h<minutes>m<seconds>s` with any unit being optional.
-  For example, an hour and a half can be specified as `1h30m` or `90m`. 
+  For example, an hour and a half can be specified as `1h30m` or `90m`.
   Must be between 15 minutes (15m) and 12 hours (12h).
 * `external_id` - (Optional) External identifier to use when assuming the role.
 * `policy` - (Optional) IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
@@ -323,7 +330,7 @@ The following `assume_role_with_web_identity` configuration block is optional:
 * `duration` - (Optional) The duration individual credentials will be valid.
   Credentials are automatically renewed up to the maximum defined by the AWS account.
   Specified using the format `<hours>h<minutes>m<seconds>s` with any unit being optional.
-  For example, an hour and a half can be specified as `1h30m` or `90m`. 
+  For example, an hour and a half can be specified as `1h30m` or `90m`.
   Must be between 15 minutes (15m) and 12 hours (12h).
 * `policy` - (Optional) IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
 * `policy_arns` - (Optional) Set of Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.
@@ -415,7 +422,7 @@ Your administrative AWS account will contain at least the following items:
 * An [S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html)
   that will contain the Terraform state files for each workspace.
 
-Provide the S3 bucket name to Terraform in the S3 backend configuration 
+Provide the S3 bucket name to Terraform in the S3 backend configuration
 using the `bucket` argument. Set `use_lockfile` to true to enable state locking.
 Configure a suitable `workspace_key_prefix` to manage states of workspaces that
 will be created for this configuration.
@@ -547,14 +554,14 @@ services, such as ECS.
 
 ### Protecting Access to Workspace State
 
-In a simple implementation of the pattern described earlier,  
-all users can read and write states for all workspaces.  
-In many cases, it is desirable to apply precise access controls  
-to the Terraform state objects stored in S3. For example, only  
-trusted administrators should modify the production state.  
-It is also important to control access to _reading_ the state file.  
-If state locking is enabled, the lock file (`<key>.tflock`)  
-must also be included in the access controls.  
+In a simple implementation of the pattern described earlier,
+all users can read and write states for all workspaces.
+In many cases, it is desirable to apply precise access controls
+to the Terraform state objects stored in S3. For example, only
+trusted administrators should modify the production state.
+It is also important to control access to _reading_ the state file.
+If state locking is enabled, the lock file (`<key>.tflock`)
+must also be included in the access controls.
 
 Amazon S3 supports fine-grained access control on a per-object-path basis
 using IAM policy. A full description of S3's access control mechanism is

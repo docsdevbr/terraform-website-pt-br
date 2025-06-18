@@ -1,16 +1,23 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Backend block configuration overview
 description: >-
   Use the `backend` block to control where Terraform stores state. Learn about the available state backends, the backend block, initializing backends, partial backend configuration, changing backend configuration, and unconfiguring a backend.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
 
-# Backend block configuration overview 
+# Backend block configuration overview
 
 This topic provides an overview of how to configure the `backend` block in your Terraform configuration. The `backend` defines where Terraform stores its [state](/terraform/language/state) data files.
 
@@ -45,7 +52,7 @@ There are some important limitations on backend configuration:
 
 ### Default backend
 
-Terraform uses a backend called [`local`](/terraform/language/backend/local) by default. The `local` backend type stores state as a local file on disk. 
+Terraform uses a backend called [`local`](/terraform/language/backend/local) by default. The `local` backend type stores state as a local file on disk.
 
 ### Backend types
 
@@ -56,7 +63,7 @@ Specify the backend type as the `backend` block label. The following example ins
 ```hcl
 backend "remote" {
   organization = "example_corp"
-  . . . 
+  . . .
 }
 ```
 
@@ -64,7 +71,7 @@ The specified backend must be available in the version of Terraform you are usin
 
 ### Backend arguments
 
-The arguments in the `backend` block body are specific to the backend type. They specify where and how the backend stores configuration state. Some backend types allow you to configure additional behaviors. Refer to the documentation for your backend for additional information. 
+The arguments in the `backend` block body are specific to the backend type. They specify where and how the backend stores configuration state. Some backend types allow you to configure additional behaviors. Refer to the documentation for your backend for additional information.
 
 Some backends allow you to provide access credentials as part of the configuration, but we do not recommend including access credentials directly in the configuration. Instead, leave credential-related arguments unset and provide them using the credentials files or environment variables that are conventional for the target system.
 
@@ -113,16 +120,16 @@ There are several ways to supply the remaining arguments:
 
 - **File**: A configuration file may be specified via the `init` command line.
   To specify a file, use the `-backend-config=PATH` option when running
-  `terraform init`. The partial configuration must have a `backend` block containing keys set to empty values. When you run the `terraform init -backend-config="<path-to-remaining-configuration>"` command, Terraform populates the keys in the partial `backend` configuration with matching key values from the specified configuration file. In the following example, the keys defined in the `backend` block of the `state.tf` configuration file are populated with values from the `state.config` configuration:  
+  `terraform init`. The partial configuration must have a `backend` block containing keys set to empty values. When you run the `terraform init -backend-config="<path-to-remaining-configuration>"` command, Terraform populates the keys in the partial `backend` configuration with matching key values from the specified configuration file. In the following example, the keys defined in the `backend` block of the `state.tf` configuration file are populated with values from the `state.config` configuration:
     ```
     $ `terraform init -backend-config="./state.config"`
-    ```   
+    ```
 
   ```hcl
   # state.tf
   terraform {
     backend "s3" {
-      bucket = "" 
+      bucket = ""
       key    = ""
       region = ""
       profile= ""
@@ -132,7 +139,7 @@ There are several ways to supply the remaining arguments:
 
   ```hcl
   # state.config
-  bucket = "your-bucket" 
+  bucket = "your-bucket"
   key    = "your-state.tfstate"
   region = "eu-central-1"
   profile= "Your_Profile"
@@ -239,4 +246,4 @@ want to migrate your state. You can respond "no" in this scenario.
 
 ## Remove a backend configuration
 
-Remove the `backend` block from your configuration and [reinitialize](/terraform/cli/init) the directory when prompted. Terraform also prompts you to migrate the state to the default `local` backend. 
+Remove the `backend` block from your configuration and [reinitialize](/terraform/cli/init) the directory when prompted. Terraform also prompts you to migrate the state to the default `local` backend.

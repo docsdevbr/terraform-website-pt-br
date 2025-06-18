@@ -1,19 +1,26 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Define deployment configuration
 description: Learn how to write stack deployment configuration files to define how to deploy your stack’s infrastructure.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
 
 # Define deployment configuration
 
-In Stacks, deployments allow you to replicate infrastructure across multiple environments, regions, or accounts. Each deployment runs in its own isolated agent, ensuring that changes in one deployment do not affect others. 
+In Stacks, deployments allow you to replicate infrastructure across multiple environments, regions, or accounts. Each deployment runs in its own isolated agent, ensuring that changes in one deployment do not affect others.
 
--> **Note**: HCP Terraform supports up to a maximum of 20 deployments. 
+-> **Note**: HCP Terraform supports up to a maximum of 20 deployments.
 
 Learn how to write deployment configuration files that allow you to specify the environments, regions, and other parameters that will vary across deployments, while keeping your stack’s configuration nonrepetitive and reusable.
 
@@ -25,7 +32,7 @@ You can automatically manage plans for your deployments by defining orchestrate 
 
 ## Write a deployment configuration file
 
-Deployment configuration files live at the top level of your repository and use the `.tfdeploy.hcl` file extension. We recommend naming your deployments file `deployments.tfdeploy.hcl`. In your deployment configuration file, create a new `deployment` block for each environment or region where you want to deploy your stack. 
+Deployment configuration files live at the top level of your repository and use the `.tfdeploy.hcl` file extension. We recommend naming your deployments file `deployments.tfdeploy.hcl`. In your deployment configuration file, create a new `deployment` block for each environment or region where you want to deploy your stack.
 
 ```hcl
 # deployments.tfdeploy.hcl
@@ -38,7 +45,7 @@ deployment "production" {
 }
 ```
 
-The `deployment` block accepts a map of `inputs` where you can specify any unique configurations that deployment may need. The `deployment` block does not accept any meta-arguments. 
+The `deployment` block accepts a map of `inputs` where you can specify any unique configurations that deployment may need. The `deployment` block does not accept any meta-arguments.
 
 ```hcl
 # deployments.tfdeploy.hcl
@@ -58,11 +65,11 @@ deployment "staging" {
 }
 ```
 
-You can also specify `identity_token` blocks and `orchestrate` blocks in a deployment configuration file. 
+You can also specify `identity_token` blocks and `orchestrate` blocks in a deployment configuration file.
 
-## Deployment authentication 
+## Deployment authentication
 
-The `identity_token` block tells HCP Terraform to generate a JSON Web Token (JWT) for that deployment’s components to authenticate to providers using OIDC. For example, you can set up your deployment to authenticate with the AWS provider using a particular role ARN. 
+The `identity_token` block tells HCP Terraform to generate a JSON Web Token (JWT) for that deployment’s components to authenticate to providers using OIDC. For example, you can set up your deployment to authenticate with the AWS provider using a particular role ARN.
 
 ```hcl
 # deployments.tfdeploy.hcl

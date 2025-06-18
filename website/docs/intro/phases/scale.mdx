@@ -1,10 +1,17 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Scale Terraform
 description: Define boundaries of infrastructure ownership across your team with Terraform.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -23,15 +30,15 @@ Terraform supports [multiple module distribution options](/terraform/language/mo
 
 If you cannot use a native module registry, there are other source options such as [Git repositories](/terraform/language/modules/sources#generic-git-repository) or [AWS S3](/terraform/language/modules/sources#s3-bucket).
 
-Modules also help teams establish infrastructure configuration standards. For example, you can write a module to create a database used by your application that includes all of the defaults that your architecture requires. The module can define the database size, type, and handle all of the required networking. This ensures that module consumers provision infrastructure in line with your organization standards and requirements. 
+Modules also help teams establish infrastructure configuration standards. For example, you can write a module to create a database used by your application that includes all of the defaults that your architecture requires. The module can define the database size, type, and handle all of the required networking. This ensures that module consumers provision infrastructure in line with your organization standards and requirements.
 
-Since modules define their own inputs, you can decide which parameters are configurable by the user. For example, you might want to allow them to change the size of the cluster, but not let them change the engine type. 
+Since modules define their own inputs, you can decide which parameters are configurable by the user. For example, you might want to allow them to change the size of the cluster, but not let them change the engine type.
 
-Read the [recommended patterns for creating modules](/terraform/tutorials/modules/pattern-module-creation). 
+Read the [recommended patterns for creating modules](/terraform/tutorials/modules/pattern-module-creation).
 
 ## Divide infrastructure responsibility
 
-It is common for different teams to focus on different parts of your organization's infrastructure. For example, the networking team may manage the VPCs, while the application team only needs to know where to deploy their application and focuses on configuring servers and databases. In this scenario, there is a division of responsibilities but the application team still needs to access data about the networking resources for their own configuration. 
+It is common for different teams to focus on different parts of your organization's infrastructure. For example, the networking team may manage the VPCs, while the application team only needs to know where to deploy their application and focuses on configuring servers and databases. In this scenario, there is a division of responsibilities but the application team still needs to access data about the networking resources for their own configuration.
 
 Terraform lets you [reference data about other resources](/terraform/language/state/remote#delegation-and-teamwork) in your configuration without having to manage them in the same state file, allowing you to maintain distinct areas of ownership and infrastructure decoupling. You can use data sources to query a provider for more data about a particular resource, or reference output values from another state file using the remote state data source. HCP Terraform lets you explicitly grant access to your workspace state file to only the workspaces that need it, reducing access to potentially sensitive data. You can also use the [tfe_outputs](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/outputs) data source to access the outputs of another HCP Terraform workspace.
 
@@ -41,6 +48,6 @@ Many Terraform users start by deploying to a single account in their cloud provi
 
 ## Next steps
 
-As your teams grow, a common operational challenge is deciding how to enforce your organization's standards and practices. Using codified, automated policy enforcement with Sentinel or OPA ensures consistent application of your standards. 
+As your teams grow, a common operational challenge is deciding how to enforce your organization's standards and practices. Using codified, automated policy enforcement with Sentinel or OPA ensures consistent application of your standards.
 
 [Learn how to govern your organization's best practices](/terraform/intro/phases/govern).

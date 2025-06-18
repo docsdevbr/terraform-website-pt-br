@@ -1,23 +1,30 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Dependency Graph
 description: >-
   Learn how Terraform builds a dependency graph from the Terraform configurations and
-  uses the graph to generate plans, refresh state, perform other operations. 
+  uses the graph to generate plans, refresh state, perform other operations.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
 
-# Dependency Graph 
+# Dependency Graph
 
-This topic explains the dependency graph Terraform builds from Terraform configurations. This is an advanced topic and not required to understand how to use Terraform. 
+This topic explains the dependency graph Terraform builds from Terraform configurations. This is an advanced topic and not required to understand how to use Terraform.
 
-## Introduction 
+## Introduction
 
-Terraform builds a dependency graph and uses it to perform operations, such as generate plans and refresh state. 
+Terraform builds a dependency graph and uses it to perform operations, such as generate plans and refresh state.
 For background on graph theory and a summary of how
 Terraform applies it, refer the HashiCorp 2016 presentation
 [_Applying Graph Theory to Infrastructure as Code_](https://www.youtube.com/watch?v=Ce3RNfRbdZ0).

@@ -1,10 +1,17 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Use write-only arguments
 description: Learn how to use write-only arguments to set temporary values that are not stored in Terraform's state or plan files.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -82,7 +89,7 @@ resource "aws_db_instance" "example" {
 
 </CodeBlockConfig>
 
-During a Terraform operation, the provider uses the `password_wo` value to create the database instance, and then Terraform discards that value without storing it in the plan or state file. 
+During a Terraform operation, the provider uses the `password_wo` value to create the database instance, and then Terraform discards that value without storing it in the plan or state file.
 
 Note that Terraform does not store the generated value for `password_wo`, but you can capture it in another resource or output. For an example of generating, storing, retrieving, and using an ephemeral password as a write-only argument, refer to the [Examples](#examples).
 

@@ -1,12 +1,19 @@
 ---
-page_title: Get an API token for HCP Terraform or Terraform Enterprise  
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
+page_title: Get an API token for HCP Terraform or Terraform Enterprise
 description: >-
   Use the `terraform login` and `terraform logout` commands get
   an API token for your HCP Terraform or Terraform Enterprise account.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -22,12 +29,12 @@ This topic describes how to use the `terraform login` and `terraform logout` to 
 [HCP Terraform](https://cloud.hashicorp.com/products/terraform) and
 [Terraform Enterprise](/terraform/enterprise) are platforms that perform
 Terraform runs to provision infrastructure, offering a collaboration-focused
-environment that makes it easier for teams to use Terraform together. 
+environment that makes it easier for teams to use Terraform together.
 
-You can integrate the Terraform CLI with HCP Terraform and Terraform Enterprise in the following ways: 
+You can integrate the Terraform CLI with HCP Terraform and Terraform Enterprise in the following ways:
 
 - Use the Terraform CLI as a front-end for [CLI-driven runs](/terraform/cloud-docs/run/cli) in HCP Terraform
-- Use HCP Terraform or Terraform Enterprise as a state backend and a private module registry. 
+- Use HCP Terraform or Terraform Enterprise as a state backend and a private module registry.
 
 These integrations require you to authenticate the Terraform CLI
 with your HCP Terraform account.

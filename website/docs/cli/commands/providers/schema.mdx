@@ -1,11 +1,18 @@
 ---
-page_title: terraform providers schema command 
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
+page_title: terraform providers schema command
 description: >-
   The `terraform providers schema` command prints detailed schemas for the providers declared in the configuration.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -22,7 +29,7 @@ $ terraform providers schema [options]
 
 The following flags are available:
 
-- `-json` - Displays the schemas in a machine-readable JSON format. The `-json` flag is required. 
+- `-json` - Displays the schemas in a machine-readable JSON format. The `-json` flag is required.
 
   The output includes a `format_version` key, which has a default value of `"1.0"`. The semantics of this version are:
 

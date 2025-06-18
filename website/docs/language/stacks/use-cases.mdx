@@ -1,20 +1,27 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Use cases
 description: Learn about example use cases to better understand how to use Stacks to manage your infrastructure lifecycle more effectively.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
 
 # Use Cases
 
-Stacks provide a way to define, organize, and reuse components and then deploy the infrastructure those components describe consistently across different deployments. 
+Stacks provide a way to define, organize, and reuse components and then deploy the infrastructure those components describe consistently across different deployments.
 
 Stacks are ideal for the following situations:
-* Managing infrastructure with a common lifecycle, such as a microservices architecture where HCP Terraform needs to deploy multiple services together. 
+* Managing infrastructure with a common lifecycle, such as a microservices architecture where HCP Terraform needs to deploy multiple services together.
 * Repeating infrastructure across different environments, regions, or accounts that require consistent and synchronized deployments.
 * Tightly orchestrating infrastructure changes across different environments. Stacks help you manage your dependencies and ensure Terraform creates resources in the correct order.
 
@@ -95,7 +102,7 @@ By default, HCP Terraform notices that you changed your configuration and will c
 
 ## Deploy across regions
 
-For global applications, deploying infrastructure across multiple cloud regions is often necessary to ensure low latency and high availability. Stacks enable you to manage cross-region deployments with a unified configuration, ensuring that HCP Terraform sets up each region consistently while allowing for region-specific customization. 
+For global applications, deploying infrastructure across multiple cloud regions is often necessary to ensure low latency and high availability. Stacks enable you to manage cross-region deployments with a unified configuration, ensuring that HCP Terraform sets up each region consistently while allowing for region-specific customization.
 
 For example, if you want to deploy the same environment to two different regions, you could set up your deployments to be region-specific.
 
@@ -134,8 +141,8 @@ Stacks support using the [`for_each` meta argument](/terraform/language/meta-arg
 ```hcl
 # variables.tfstack.hcl
 
-# The regions variable is where we specify each region we want to deploy this 
-# Stack's infrastructure within. 
+# The regions variable is where we specify each region we want to deploy this
+# Stack's infrastructure within.
 variable "regions" {
     type = set(string)
 }

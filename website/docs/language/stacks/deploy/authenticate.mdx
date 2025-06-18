@@ -1,10 +1,17 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Authenticate a Stack
 description: Learn how to set up OIDC authentication or use the store block to authenticate Stacks with their providers.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -17,7 +24,7 @@ You can authenticate a Stack in two ways:  by using OIDC to dynamically authenti
 
 [OpenID Connect](https://openid.net/connect/) (OIDC) is an identity layer on top of the OAuth 2.0 protocol. You can use HCP Terraform’s [Workload identity](/terraform/cloud-docs/workspaces/dynamic-provider-credentials/workload-identity-tokens) tokens, built on the OpenID Connect protocol, to securely connect and authenticate your Stacks with cloud providers.
 
--> **Hands on**: Walk through setting up OIDC for a Stack in the [Deploy a Stack with HCP Terraform](/terraform/tutorials/cloud/stacks-deploy) tutorial. 
+-> **Hands on**: Walk through setting up OIDC for a Stack in the [Deploy a Stack with HCP Terraform](/terraform/tutorials/cloud/stacks-deploy) tutorial.
 
 Stacks have a built-in `identity_token` block that creates workload identity tokens, also known as JWT tokens. You can use these tokens to authenticate Stacks with Terraform providers securely.
 
@@ -27,8 +34,8 @@ This guide covers how to set up OIDC for Stacks using the `identity_token` block
 
 The details of Stack authentication differ based on which cloud provider you are setting up, but the basic steps remain the same:
 
-1. Set up the trust configuration between your cloud provider and HCP Terraform, which usually includes creating roles and policies for your cloud provider.  
-1. Add an `identity_token` block to your Stack’s deployment file using the audience and roles you created in the previous step.   
+1. Set up the trust configuration between your cloud provider and HCP Terraform, which usually includes creating roles and policies for your cloud provider.
+1. Add an `identity_token` block to your Stack’s deployment file using the audience and roles you created in the previous step.
 
 Your deployments can reference the value of the `identity_token` block to pass the trust relationship role to your Stack’s operations.
 
@@ -38,7 +45,7 @@ In this example, you will set up an example trust policy with AWS. For examples 
 
 We recommend using Terraform to create and configure the trust relationship and permissions for the cloud provider you want to authenticate with. Using the following Terraform configuration, [create a new workspace](/terraform/cloud-docs/workspaces/create) and configure the `aws_region`, `tf_organization`, `tf_project,` and `tf_stack` variables for your specific set up.
 
-```hcl 
+```hcl
 # main.tf
 
 variable "aws_region" {
@@ -95,9 +102,9 @@ data "aws_iam_policy_document" "stacks_role_policy" {
     condition {
       test     = "StringLike"
       variable = "app.terraform.io:sub"
-      # This value dictates which HCP Terraform organizations, projects,  
+      # This value dictates which HCP Terraform organizations, projects,
       # and stacks can assume the new role you are creating.
-      # 
+      #
       # You can widen access to an entire organization or project by
       # tweaking the value below. You can also restrict access to specific
       # deployments or operations. Refer to Configure trust for more information.
@@ -108,8 +115,8 @@ data "aws_iam_policy_document" "stacks_role_policy" {
 
 # Now, you give the new role access to things you want to manage in your Stack.
 #
-# The policies below are too broad for a production use case, but you set them 
-# broadly for now to ensure this Stacks can do anything during development and 
+# The policies below are too broad for a production use case, but you set them
+# broadly for now to ensure this Stacks can do anything during development and
 # testing. In practice, only give your Stack access to what it needs to manage.
 
 resource "aws_iam_role_policy_attachment" "iam" {
@@ -122,8 +129,8 @@ resource "aws_iam_role_policy_attachment" "sudo" {
   policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
 }
 
-# Your workspace returns this output role, which you use to configure your 
-# deployments. 
+# Your workspace returns this output role, which you use to configure your
+# deployments.
 output "role_arn" {
   value = aws_iam_role.stacks_role.arn
 }
@@ -186,7 +193,7 @@ Once defined, you can reference an identity token in a deployment's input variab
 
 You also need to add your trust relationship, your role ARN, to configure your token with the trust relationship to authenticate AWS resources.
 
-```hcl 
+```hcl
 # deployments.tfdeploy.hcl
 
 identity_token "aws" {
@@ -247,7 +254,7 @@ You can use the `store` block to access credentials stored in an [HCP Terraform 
 
 Before writing any configuration, ensure your Stack can access the variable set you are targeting by allowing your project to access the set or making the set globally available.
 
-Next, add a `store` block to your deployment configuration file to access your variable set. Once defined, your deployments can access your variable set’s values. 
+Next, add a `store` block to your deployment configuration file to access your variable set. Once defined, your deployments can access your variable set’s values.
 
 ```hcl
 # deployments.tfdeploy.hcl
@@ -258,20 +265,20 @@ store "varset" "tokens" {
   category = "env"
 }
 
-# Access your variable set's value using your store and pass them into your 
+# Access your variable set's value using your store and pass them into your
 # deployment's inputs.
 deployment "test" {
   inputs = {
-    access_key = store.varset.tokens.AWS_ACCESS_KEY_ID    
+    access_key = store.varset.tokens.AWS_ACCESS_KEY_ID
     secret_key = store.varset.tokens.AWS_SECRET_ACCESS_KEY
     session_token = store.varset.tokens.AWS_SESSION_TOKEN
   }
 }
 ```
 
-For example, if your `test` deployment can use your `store` to access your variable set’s keys, and therefore, your variable set’s AWS provider credentials.  
+For example, if your `test` deployment can use your `store` to access your variable set’s keys, and therefore, your variable set’s AWS provider credentials.
 
-Your `test` deployment can define your AWS credentials as `inputs`, allowing your `providers` to access those credentials. 
+Your `test` deployment can define your AWS credentials as `inputs`, allowing your `providers` to access those credentials.
 
 ```hcl
 # providers.tfstack.hcl

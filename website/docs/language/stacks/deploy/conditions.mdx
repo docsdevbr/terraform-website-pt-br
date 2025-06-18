@@ -1,10 +1,17 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Set conditions for deployment plans
 description: Learn how to use the orchestrate block to automatically approve Stack deployment plans and help you manage your Stack deployments at scale.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -23,12 +30,12 @@ The `orchestrate` block uses a `check` block to determine if a condition has pas
 
 There are two orchestration rule types to choose from:
 
-1. The `auto_approve` rule executes after a Stack creates a plan and automatically approves a plan if all checks pass.  
+1. The `auto_approve` rule executes after a Stack creates a plan and automatically approves a plan if all checks pass.
 1. The `replan` rule executes after a Stack applies a plan, automatically triggering a replan if all the checks pass.
 
-The `auto_approve` rule is helpful when you know you want a certain type of plan to go ahead without manual intervention. For example, Stacks have a default `auto_approve` rule named `empty_plan`, which automatically approves a plan if it has no changes. 
+The `auto_approve` rule is helpful when you know you want a certain type of plan to go ahead without manual intervention. For example, Stacks have a default `auto_approve` rule named `empty_plan`, which automatically approves a plan if it has no changes.
 
-As another example, you could create a rule that automatically approves deployments if a component has not changed. 
+As another example, you could create a rule that automatically approves deployments if a component has not changed.
 
 ```hcl
 # deployments.tfdeploy.hcl
@@ -42,7 +49,7 @@ orchestrate "auto_approve" "no_pet_changes" {
 }
 ```
 
-The above `orchestrate` block automatically approves plans if they do not include any changes for the `pet` component. 
+The above `orchestrate` block automatically approves plans if they do not include any changes for the `pet` component.
 
 The `replan` rule is helpful when you need your Stack to perform another plan after it applies the last one. You could create a rule to automatically replan a deployment if the production deployment errors out.
 
@@ -98,7 +105,7 @@ orchestrate "auto_approve" "safe_plans" {
         reason    = "Plan is destroying ${context.plan.changes.remove} resources."
     }
 
-    # Ensure that the deployment is not your production environment. 
+    # Ensure that the deployment is not your production environment.
     check {
         condition = context.plan.deployment != deployment.production
         reason    = "Production plans are not eligible for auto_approve."
@@ -107,7 +114,7 @@ orchestrate "auto_approve" "safe_plans" {
 ```
 
 For more information on the information available in the context variable, refer to the [Deployment configuration file reference](/terraform/language/stacks/reference/tfdeploy).
- 
+
 ## Next steps
 
 With your Stack and deployment configurations complete, your Stack is ready to be deployed by HCP Terraform. To learn more about creating a Stack in HCP Terraform, refer to [Create a Stack](/terraform/cloud-docs/stacks/create).

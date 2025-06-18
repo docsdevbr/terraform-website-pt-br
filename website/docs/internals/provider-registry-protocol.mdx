@@ -1,11 +1,18 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/main/LICENSE
+
 page_title: Provider registry protocol reference
 description: |-
   Use the provider registry protocol to enable Terraform to discover metadata about available providers and locate their distribution packages.
 ---
 
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > **Documentation Update:** Product documentation previously located in `/website` has moved to the [`hashicorp/web-unified-docs`](https://github.com/hashicorp/web-unified-docs) repository, where all product documentation is now centralized. Please make contributions directly to `web-unified-docs`, since changes to `/website` in this repository will not appear on developer.hashicorp.com.
 ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
@@ -14,7 +21,7 @@ description: |-
 
 This topic provides reference information about the provider registry protocol. The protocol allows the Terraform CLI to discover metadata about the providers available for installation and to locate the distribution packages for a selected provider.
 
-## Introduction 
+## Introduction
 
 The primary implementation of this protocol is the public
 [Terraform Registry](https://registry.terraform.io/) at `registry.terraform.io`.
@@ -300,7 +307,7 @@ A successful result is a JSON object with the following properties:
   request.
 
 * `arch` (required): this must echo back the `arch` parameter from the
-  request. 
+  request.
 
 * `filename` (required): the filename for this provider's zip archive as
   recorded in the "shasums" document, so that Terraform CLI can determine which
@@ -321,7 +328,7 @@ A successful result is a JSON object with the following properties:
 * `shasums_signature_url` (required): a URL from which Terraform can retrieve
   a binary, detached GPG signature for the document at `shasums_url`, signed
   by one of the keys indicated in the `signing_keys` property.
-  
+
 * `shasum` (required): the SHA256 checksum for this provider's zip archive as
   recorded in the shasums document.
 
