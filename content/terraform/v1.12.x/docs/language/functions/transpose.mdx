@@ -1,0 +1,36 @@
+---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/web-unified-docs/blob/main/LICENSE
+
+page_title: transpose - Functions - Configuration Language
+description: |-
+  The transpose function takes a map of lists of strings and swaps the keys
+  and values.
+---
+
+# `transpose` Function
+
+`transpose` takes a map of lists of strings and swaps the keys and values
+to produce a new map of lists of strings.
+
+## Examples
+
+```
+> transpose({"a" = ["1", "2"], "b" = ["2", "3"]})
+{
+  "1" = [
+    "a",
+  ],
+  "2" = [
+    "a",
+    "b",
+  ],
+  "3" = [
+    "b",
+  ],
+}
+```

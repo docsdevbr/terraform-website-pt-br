@@ -1,0 +1,31 @@
+---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/web-unified-docs/blob/main/LICENSE
+
+page_title: terraform workspace list command reference
+description: The terraform workspace list command lists all existing workspaces.
+---
+
+# `terraform workspace list` command
+
+The `terraform workspace list` command lists all existing workspaces.
+
+## Usage
+
+Usage: `terraform workspace list [DIR]`
+
+The command will list all existing workspaces. The current workspace is
+indicated using an asterisk (`*`) marker.
+
+## Example
+
+```
+$ terraform workspace list
+  default
+* development
+  jsmith-test
+```
