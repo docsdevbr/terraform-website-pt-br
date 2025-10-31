@@ -1,11 +1,4 @@
 ---
-# Copyright (c) 2024 HashiCorp, Inc.
-# Terraform and the Terraform logo are trademarks of HashiCorp.
-
-# Documentation licensed under the Business Source License, Version 1.1.
-# The original work was translated from English into Brazilian Portuguese.
-# https://github.com/hashicorp/web-unified-docs/blob/main/LICENSE
-
 page_title: Use cases
 description: Learn about example use cases to better understand how to use Stacks to manage your infrastructure lifecycle more effectively.
 ---
@@ -19,7 +12,7 @@ Stacks are ideal for the following situations:
 * Repeating infrastructure across different environments, regions, or accounts that require consistent and synchronized deployments.
 * Tightly orchestrating infrastructure changes across different environments. Stacks help you manage your dependencies and ensure Terraform creates resources in the correct order.
 
-Stacks can simplify the complexity of wrangling the infrastructure in these scenarios, ensuring that your configurations remain organized, maintainable, and scalable.
+Stacks can simplify the complexity of wrangling the infrastructure in these scenarios, ensuring that your configurations remains organized, maintainable, and scalable.
 
 ## Manage deployment dependencies
 
@@ -29,7 +22,7 @@ Stacks allow you to manage dependencies within complex infrastructure deployment
 
 For example, when managing Kubernetes workloads that use custom resources, you cannot provision a custom resource definition (CRD) API and the resources that use those APIs in a single step. In these scenarios, HCP Terraform first needs to deploy your CRD and then deploy the resources that require your CRD in a second plan and apply. When you deploy this setup with HCP Terraform workspaces, you manage multiple workspaces to accomplish this workflow, which can get complicated.
 
-When you use a Stack, HCP Terraform recognizes the dependency between components, automatically deferring the component's plan and apply steps until it can complete them successfully. Learn more about how Stacks plan [deferred changes](/terraform/cloud-docs/stacks/deploy/plans#deferred-changes).
+When you use a Stack, HCP Terraform recognizes the dependency between components, automatically deferring the component's plan and apply steps until it can complete them successfully. Learn more about how Stacks plan [deferred changes](/terraform/cloud-docs/stacks/deploy/runs#deferred-changes).
 
 ## Deploy to multiple environments
 
@@ -130,7 +123,7 @@ deployment "us_dev_west" {
 }
 ```
 
-Stacks support using the [`for_each` meta argument](/terraform/language/meta-arguments/for_each) in both `provider` and `component` blocks. You can use this support to streamline infrastructure deployment in repeating regions. For example, you could set up a variable to expect a set of regions.
+Stacks support using the [`for_each` meta argument](/terraform/language/meta-arguments#for_each) in both `provider` and `component` blocks. You can use this support to streamline infrastructure deployment in repeating regions. For example, you could set up a variable to expect a set of regions.
 
 ```hcl
 # variables.tfstack.hcl

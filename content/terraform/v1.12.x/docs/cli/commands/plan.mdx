@@ -1,11 +1,4 @@
 ---
-# Copyright (c) 2024 HashiCorp, Inc.
-# Terraform and the Terraform logo are trademarks of HashiCorp.
-
-# Documentation licensed under the Business Source License, Version 1.1.
-# The original work was translated from English into Brazilian Portuguese.
-# https://github.com/hashicorp/web-unified-docs/blob/main/LICENSE
-
 page_title: terraform plan command reference
 description: >-
   The `terraform plan` command creates an execution plan with a preview of the
@@ -40,7 +33,7 @@ to be taken.
 If you are using Terraform directly in an interactive terminal and you expect
 to apply the changes Terraform proposes, you can alternatively run
 [`terraform apply`](/terraform/cli/commands/apply) directly. By default, the "apply" command
-automatically generates a new plan and prompts you to approve it.
+automatically generates a new plan and prompts for you to approve it.
 
 You can use the optional `-out=FILE` option to save the generated plan to a
 file on disk, which you can later execute by passing the file to
@@ -139,37 +132,35 @@ In addition to alternate [planning modes](#planning-modes), there are several op
   resource instance with the given address. This is helpful when one or more remote objects have become degraded, and you can use replacement objects with the same configuration to align with immutable infrastructure patterns. Terraform will use a "replace" action if the specified resource would normally cause an "update" action or no action at all. Include this option multiple times to replace several objects at once. You cannot use `-replace` with the `-destroy` option, and it is only available from Terraform v0.15.2 onwards. For earlier versions, use [`terraform taint`](/terraform/cli/commands/taint) to achieve a similar result.
 
 - `-target=ADDRESS` - Instructs Terraform to focus its planning efforts only
-  on resource instances that match the given address and on any objects that
+  on resource instances which match the given address and on any objects that
   those instances depend on.
 
   -> **Note:** Use `-target=ADDRESS` in exceptional circumstances only, such as recovering from mistakes or working around Terraform limitations. Refer to [Resource Targeting](#resource-targeting) for more details.
 
 - `-var 'NAME=VALUE'` - Sets a value for a single
-  [input variable](/terraform/language/values/variables) declared in the
+  [input variable](/terraform/language/block/variable) declared in the
   root module of the configuration. Use this option multiple times to set
   more than one variable. Refer to
   [Input Variables on the Command Line](#input-variables-on-the-command-line) for more information.
-
 - `-var-file=FILENAME` - Sets values for potentially many
-  [input variables](/terraform/language/values/variables) declared in the
+  [input variables](/terraform/language/block/variable) declared in the
   root module of the configuration, using definitions from a
-  ["tfvars" file](/terraform/language/values/variables#variable-definitions-tfvars-files).
+  [`.tfvars` file](/terraform/language/parameterize#variable-definition-files).
   Use this option multiple times to include values from more than one file.
-
 There are several other ways to set values for input variables in the root
 module, aside from the `-var` and `-var-file` options. Refer to
-[Assigning Values to Root Module Variables](/terraform/language/values/variables#assigning-values-to-root-module-variables) for more information.
+[Assign values to input variables](/terraform/language/parameterize#assign-values-to-input-variables) for more information.
 
 ### Input Variables on the Command Line
 
 You can use the `-var` command line option to specify values for
-[input variables](/terraform/language/values/variables) declared in your
+[input variables](/terraform/language/block/variable) declared in your
 root module.
 
 However, to do so will require writing a command line that is parsable both
 by your chosen command line shell _and_ Terraform, which can be complicated
-for expressions involving lots of quotes and escape sequences. In most cases,
-we recommend using the `-var-file` option instead, and writing your actual values
+for expressions involving lots of quotes and escape sequences. In most cases
+we recommend using the `-var-file` option instead, and write your actual values
 in a separate file so that Terraform can parse them directly, rather than
 interpreting the result of your shell's parsing.
 
@@ -232,7 +223,7 @@ terraform plan -var "name=[\"a\", \"b\", \"c\"]"
 Similar constraints apply when setting input variables using environment
 variables. For more information on the various methods for setting root module
 input variables, see
-[Assigning Values to Root Module Variables](/terraform/language/values/variables#assigning-values-to-root-module-variables).
+[Assign values to input variables](/terraform/language/parameterize#assign-values-to-input-variables).
 
 ### Resource Targeting
 

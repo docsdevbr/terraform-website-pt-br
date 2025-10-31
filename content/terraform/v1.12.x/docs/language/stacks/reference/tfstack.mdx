@@ -1,11 +1,4 @@
 ---
-# Copyright (c) 2024 HashiCorp, Inc.
-# Terraform and the Terraform logo are trademarks of HashiCorp.
-
-# Documentation licensed under the Business Source License, Version 1.1.
-# The original work was translated from English into Brazilian Portuguese.
-# https://github.com/hashicorp/web-unified-docs/blob/main/LICENSE
-
 page_title: Stack configuration file reference
 description: Stacks help you provision and coordinate your infrastructure lifecycle at scale. Learn how to write a Stack configurion file to create a Stack for your infrastructure.
 ---
@@ -77,7 +70,7 @@ To learn more about breaking down your infrastructure into components, refer to 
 
 Use the `variable` block to declare input variables for your Stack configuration. Using `variable` blocks in Stacks is similar to traditional Terraform configurations but with a few minor differences.
 
-In Stack configurations, `variable` blocks must define a `type` field and do not support the `validation` argument. Learn more about Terraform [Variables](/terraform/language/values/variables).
+In Stack configurations, `variable` blocks must define a `type` field and do not support the `validation` argument. Learn more about Terraform [Variables](/terraform/language/block/variable).
 
 ### Complete configuration
 
@@ -103,13 +96,13 @@ This section provides details about the fields you can configure in the `variabl
 | `default` | A default value for the variable which Terraform uses if no value is provided. | any | Optional |
 | `sensitive` | Marks the variable as sensitive, which prevents its value from being displayed in logs or in the HCP Terraform user interface. | bool | Optional |
 | `nullable` | Specifies whether the variable can be null. | bool | Optional |
-| `ephemeral` | Marks that this variable’s value is dynamic. For example, an expiring authentication token is `ephemeral`. Learn more about [Ephemeral variables](/terraform/language/values/variables#exclude-values-from-state). | bool | Optional |
+| `ephemeral` | Marks that this variable’s value is dynamic. For example, an expiring authentication token is `ephemeral`. Learn more about [Ephemeral variables](/terraform/language/block/variable#ephemeral). | bool | Optional |
 
 ## `output` block configuration
 
 Use the `output` block to make information about your infrastructure available in the HCP Terraform UI to expose information about your Stack. The `output` block functions the same way in Stack configuration as it does in traditional Terraform configurations with a few small differences.
 
-In Stack configurations, `output` blocks require the `type` argument, and they do not support the `preconditions` block. Learn more about [Outputs](/terraform/language/values/outputs).
+In Stack configurations, `output` blocks require the `type` argument, and they do not support the `preconditions` block. Learn more about [Outputs](/terraform/language/block/output).
 
 ### Complete configuration
 
@@ -144,7 +137,7 @@ The `required_providers` block works exactly as it does in traditional Terraform
 
 The `provider` block differs in Stack configurations in the following ways:
 
-* Supports the `for_each` [meta-argument](/terraform/language/meta-arguments/for_each)
+* Supports the `for_each` [meta-argument](/terraform/language/meta-arguments#for_each)
 * Defines aliases in the `provider` block header rather than as an argument
 * Accepts arguments using a config block
 
@@ -201,7 +194,7 @@ For more information on declaring providers in Stacks, refer to [Declare provide
 
 ## `locals` block configuration
 
-A local value assigns a name to an expression, so you can use the name multiple times within your Stack configuration instead of repeating the expression. The `locals` block works exactly as it does in traditional Terraform configurations. Learn more about [the `locals` block](/terraform/language/values/locals).
+A local value assigns a name to an expression, so you can use the name multiple times within your Stack configuration instead of repeating the expression. The `locals` block works exactly as it does in traditional Terraform configurations. Learn more about [the `locals` block](/terraform/language/block/locals).
 
 
 ## `removed` block configuration

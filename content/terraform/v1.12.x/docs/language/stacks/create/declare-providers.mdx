@@ -1,11 +1,4 @@
 ---
-# Copyright (c) 2024 HashiCorp, Inc.
-# Terraform and the Terraform logo are trademarks of HashiCorp.
-
-# Documentation licensed under the Business Source License, Version 1.1.
-# The original work was translated from English into Brazilian Portuguese.
-# https://github.com/hashicorp/web-unified-docs/blob/main/LICENSE
-
 page_title: Declare providers
 description: Learn how to declare providers in Stack configurations.
 ---
@@ -20,7 +13,7 @@ Providers in Stack configurations differ from normal Terraform configurations in
 * Modules sourced by `component` blocks cannot declare their own providers. Instead, each `component` block accepts a top-level map of providers.
 * You must pass attributes to providers using a `config` block.
 * You define provider alias names in the header of its block.
-* Providers in Stack configurations support the [`for_each`](/terraform/language/meta-arguments/for_each) meta argument.
+* Providers in Stack configurations support the [`for_each`](/terraform/language/meta-arguments#for_each) meta argument.
 
 After defining your providers, you must use the Terraform Stacks CLI to install the providers and create a provider lock file before you can use deploy your Stack.
 
@@ -138,7 +131,7 @@ The components in this example use the `for_each` meta-argument to deploy their 
 
 ### Provider support for Stack features
 
-For most providers, the version you use does not affect your Stack’s functionality. However, only certain providers and versions support [deferred changes](/terraform/cloud-docs/stacks/deploy/plans#deferred-changes). For example, you must use version 2.32.0 or higher of the Kubernetes provider to take advantage of deferred changes.
+For most providers, the version you use does not affect your Stack’s functionality. However, only certain providers and versions support [deferred changes](/terraform/cloud-docs/stacks/deploy/runs#deferred-changes). For example, you must use version 2.32.0 or higher of the Kubernetes provider to take advantage of deferred changes.
 
 Check your provider in the [Terraform registry](https://registry.terraform.io/) for more information on versions that support various Stack features.
 

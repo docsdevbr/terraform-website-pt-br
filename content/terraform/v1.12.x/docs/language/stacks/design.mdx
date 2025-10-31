@@ -1,11 +1,4 @@
 ---
-# Copyright (c) 2024 HashiCorp, Inc.
-# Terraform and the Terraform logo are trademarks of HashiCorp.
-
-# Documentation licensed under the Business Source License, Version 1.1.
-# The original work was translated from English into Brazilian Portuguese.
-# https://github.com/hashicorp/web-unified-docs/blob/main/LICENSE
-
 page_title: Design a Stack
 description: Learn how to design a Stack that aligns with your existing infrastructure and deployment needs.
 ---
@@ -54,7 +47,7 @@ If your deployment process requires automation, such as auto-approving specific 
 
 When designing your Stack, consider how it should scale as your infrastructure grows. For example, if you anticipate adding more environments or regions, design your Stack to accommodate these changes.
 
-To keep your Stack configuration concise, you can use the [locals block](/terraform/language/values/locals) to share values across your deployments.
+To keep your Stack configuration concise, you can use the [`locals` block](/terraform/language/block/locals) to share values across your deployments.
 
 ```hcl
 # deployments.tfdeploy.hcl
