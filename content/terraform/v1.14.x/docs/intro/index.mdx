@@ -1,64 +1,143 @@
 ---
-layout: "intro"
-page_title: What is Terraform
-sidebar_current: "what"
-description: |-
- Terraform is an infrastructure as code tool that lets you build, change, and version cloud and on-prem resources safely and efficiently.
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/web-unified-docs/blob/-/LICENSE
+
+source_url: https://github.com/hashicorp/web-unified-docs/blob/main/content/terraform/v1.14.x/docs/intro/index.mdx
+revision: fc0a509189dc6d77d1a6d92802b18b55fb99090c
+status: ready
+
+layout: intro
+page_title: O que é o Terraform
+sidebar_current: what
+description: >-
+  O Terraform é uma ferramenta de infraestrutura como código que permite criar,
+  alterar e versionar recursos locais e na nuvem com segurança e eficiência.
 ---
-# What is Terraform?
 
-HashiCorp Terraform is an infrastructure as code tool that lets you define both cloud and on-prem resources in human-readable configuration files that you can version, reuse, and share. You can then use a consistent workflow to provision and manage all of your infrastructure throughout its lifecycle. Terraform can manage low-level components like compute, storage, and networking resources, as well as high-level components like DNS entries and SaaS features.
+# O que é o Terraform?
 
-> **Hands On:** Try the Get Started tutorials to start managing infrastructure on popular cloud providers: [Amazon Web Services](/terraform/tutorials/aws-get-started), [Azure](/terraform/tutorials/azure-get-started), [Google Cloud Platform](/terraform/tutorials/gcp-get-started), [Oracle Cloud Infrastructure](/terraform/tutorials/oci-get-started), and [Docker](/terraform/tutorials/docker-get-started).
+O HashiCorp Terraform é uma ferramenta de infraestrutura como código que permite
+definir recursos na nuvem e localmente em arquivos de configuração legíveis por
+pessoas, que você pode versionar, reutilizar e compartilhar.
+Você pode então usar um fluxo de trabalho consistente para provisionar e
+gerenciar toda a sua infraestrutura ao longo de seu ciclo de vida.
+O Terraform pode gerenciar componentes de baixo nível, como recursos de
+computação, armazenamento e rede, bem como componentes de alto nível, como
+entradas de DNS e recursos de SaaS.
 
-## How does Terraform work?
-Terraform creates and manages resources on cloud platforms and other services through their application programming interfaces (APIs). Providers enable Terraform to work with virtually any platform or service with an accessible API.
+> **Prática:** experimente os tutoriais de introdução para começar a gerenciar a
+> infraestrutura em provedores de nuvem populares:
+> [Amazon Web Services](/terraform/tutorials/aws-get-started),
+> [Azure](/terraform/tutorials/azure-get-started),
+> [Google Cloud Platform](/terraform/tutorials/gcp-get-started),
+> [Oracle Cloud Infrastructure](/terraform/tutorials/oci-get-started) e
+> [Docker](/terraform/tutorials/docker-get-started).
 
-![Terraform creates and manages cloud platforms and services through their APIs](/img/docs/intro-terraform-apis.png)
+## Como o Terraform funciona?
 
-HashiCorp and the Terraform community have already written **thousands of providers** to manage many different types of resources and services. You can find all publicly available providers on the [Terraform Registry](https://registry.terraform.io/), including Amazon Web Services (AWS), Azure, Google Cloud Platform (GCP), Kubernetes, Helm, GitHub, Splunk, DataDog, and many more.
+O Terraform cria e gerencia recursos em plataformas de nuvem e outros serviços
+por meio de suas interfaces de programação de aplicações (APIs).
+Os provedores permitem que o Terraform funcione com praticamente qualquer
+plataforma ou serviço com uma API acessível.
 
-The core Terraform workflow consists of three stages:
+![O Terraform cria e gerencia plataformas e serviços de nuvem por meio de suas APIs](/img/docs/intro-terraform-apis.png)
 
-- **Write:** You define resources, which may be across multiple cloud providers and services. For example, you might create a configuration to deploy an application on virtual machines in a Virtual Private Cloud (VPC) network with security groups and a load balancer.
-- **Plan:** Terraform creates an execution plan describing the infrastructure it will create, update, or destroy based on the existing infrastructure and your configuration.
-- **Apply:** On approval, Terraform performs the proposed operations in the correct order, respecting any resource dependencies. For example, if you update the properties of a VPC and change the number of virtual machines in that VPC, Terraform will recreate the VPC before scaling the virtual machines.
+A HashiCorp e a comunidade do Terraform já desenvolveram **milhares de
+provedores** para gerenciar diversos tipos de recursos e serviços.
+Você pode encontrar todos os provedores disponíveis publicamente no
+[Registro do Terraform](https://registry.terraform.io/), incluindo Amazon Web
+Services (AWS), Azure, Google Cloud Platform (GCP), Kubernetes, Helm, GitHub,
+Splunk, DataDog e muitos outros.
 
-![The Terraform workflow has three steps: Write, Plan, and Apply](/img/docs/intro-terraform-workflow.png)
+O fluxo de trabalho principal do Terraform consiste em três etapas:
 
+- **Escrever:** você define recursos, que podem estar distribuídos entre vários
+  provedores e serviços de nuvem.
+  Por exemplo, você pode criar uma configuração para implantar uma aplicação em
+  máquinas virtuais em uma rede de Nuvem Privada Virtual (VPC) com grupos de
+  segurança e um balanceador de carga.
+- **Planejar:** o Terraform cria um plano de execução descrevendo a
+  infraestrutura que será criada, atualizada ou destruída com base na
+  infraestrutura existente e na sua configuração.
+- **Aplicar:** após a aprovação, o Terraform executa as operações propostas na
+  ordem correta, respeitando quaisquer dependências de recursos.
+  Por exemplo, se você atualizar as propriedades de uma VPC e alterar o número
+  de máquinas virtuais nessa VPC, o Terraform recriará a VPC antes de
+  dimensionar as máquinas virtuais.
 
-## Why Terraform?
+![O fluxo de trabalho do Terraform tem três etapas: escrever, planejar e aplicar](/img/docs/intro-terraform-workflow.png)
 
-HashiCorp co-founder and CTO Armon Dadgar explains how Terraform solves infrastructure challenges.
+## Por que o Terraform?
+
+Armon Dadgar, cofundador e CTO da HashiCorp, explica como o Terraform resolve
+os desafios de infraestrutura.
 
 <VideoEmbed url="https://www.youtube.com/embed/h970ZBgKINg"/>
 
-### Manage any infrastructure
+### Gerencie qualquer infraestrutura
 
-Find providers for many of the platforms and services you already use in the [Terraform Registry](https://registry.terraform.io/). You can also [write your own](/terraform/plugin). Terraform takes an [immutable approach to infrastructure](https://www.hashicorp.com/resources/what-is-mutable-vs-immutable-infrastructure), reducing the complexity of upgrading or modifying your services and infrastructure.
+Encontre provedores para muitas das plataformas e serviços que você já usa no
+[Registro do Terraform](https://registry.terraform.io/).
+Você também pode [criar o seu próprio provedor](/terraform/plugin).
+O Terraform adota uma
+[abordagem imutável para a infraestrutura](https://www.hashicorp.com/resources/what-is-mutable-vs-immutable-infrastructure),
+reduzindo a complexidade de atualizar ou modificar seus serviços e
+infraestrutura.
 
-### Track your infrastructure
+### Monitore sua infraestrutura
 
-Terraform generates a plan and prompts you for your approval before modifying your infrastructure. It also keeps track of your real infrastructure in a [state file](/terraform/language/state), which acts as a source of truth for your environment. Terraform uses the state file to determine the changes to make to your infrastructure so that it will match your configuration.
+O Terraform gera um plano e solicita sua aprovação antes de modificar sua
+infraestrutura.
+Ele também mantém um registro da sua infraestrutura real em um
+[arquivo de estado](/terraform/language/state), que funciona como uma fonte da
+verdade para o seu ambiente.
+O Terraform usa o arquivo de estado para determinar as alterações a serem feitas
+em sua infraestrutura para que ela corresponda à sua configuração.
 
-### Automate changes
+### Automatize as alterações
 
-Terraform configuration files are declarative, meaning that they describe the end state of your infrastructure. You do not need to write step-by-step instructions to create resources because Terraform handles the underlying logic. Terraform builds a resource graph to determine resource dependencies and creates or modifies non-dependent resources in parallel. This allows Terraform to provision resources efficiently.
+Os arquivos de configuração do Terraform são declarativos, o que significa que
+descrevem o estado final da sua infraestrutura.
+Você não precisa escrever instruções passo a passo para criar recursos, pois o
+Terraform lida com a lógica subjacente.
+O Terraform constrói um grafo de recursos para determinar as dependências entre
+eles e cria ou modifica recursos independentes em paralelo.
+Isso permite que o Terraform provisione recursos de forma eficiente.
 
-### Standardize configurations
+### Padronize as configurações
 
-Terraform supports reusable configuration components called [modules](/terraform/language/modules) that define configurable collections of infrastructure, saving time and encouraging best practices. You can use publicly available modules from the Terraform Registry, or write your own.
+O Terraform oferece suporte a componentes de configuração reutilizáveis chamados
+[módulos](/terraform/language/modules) que definem conjuntos configuráveis de
+infraestrutura, economizando tempo e incentivando as melhores práticas.
+Você pode usar módulos disponíveis publicamente no Registro do Terraform ou
+criar os seus próprios módulos.
 
-### Collaborate
+### Colabore
 
-Since your configuration is written in a file, you can commit it to a Version Control System (VCS) and use [HCP Terraform](/terraform/intro/terraform-editions#hcp-terraform) to efficiently manage Terraform workflows across teams. HCP Terraform runs Terraform in a consistent, reliable environment and provides secure access to shared state and secret data, role-based access controls, a private registry for sharing both modules and providers, and more.
+Como sua configuração é escrita em um arquivo, você pode enviá-la para um
+sistema de controle de versão (VCS) e usar o
+[HCP Terraform](/terraform/intro/terraform-editions#hcp-terraform) para
+gerenciar os fluxos de trabalho do Terraform entre os times de forma eficiente.
+O HCP Terraform executa o Terraform em um ambiente consistente e confiável,
+fornecendo acesso seguro a dados compartilhados de estado e segredos, controles
+de acesso baseados em funções, um registro privado para compartilhamento de
+módulos e provedores e muito mais.
 
--> **Tip:** Learn more about [Terraform use cases](/terraform/intro/use-cases) and [how Terraform compares to alternatives](/terraform/intro/vs).
+-> **Dica:** Saiba mais sobre os
+[casos de uso do Terraform](/terraform/intro/use-cases) e
+[como o Terraform se compara a alternativas](/terraform/intro/vs).
 
-## Community
+## Comunidade
 
-We welcome questions, suggestions, and contributions from the community.
+Agradecemos perguntas, sugestões e contribuições da comunidade.
 
-- Ask questions in [HashiCorp Discuss](https://discuss.hashicorp.com/c/terraform-core/27).
-- Read our [contributing guide](https://github.com/hashicorp/terraform/blob/main/.github/CONTRIBUTING.md).
-- [Submit an issue](https://github.com/hashicorp/terraform/issues/new/choose) for bugs and feature requests.
+- Faça perguntas no
+  [Discuss da HashiCorp](https://discuss.hashicorp.com/c/terraform-core/27).
+- Leia nosso
+  [guia de contribuição](https://github.com/hashicorp/terraform/blob/main/.github/CONTRIBUTING.md).
+- [Crie uma issue](https://github.com/hashicorp/terraform/issues/new/choose)
+  para bugs e solicitações de recursos.
