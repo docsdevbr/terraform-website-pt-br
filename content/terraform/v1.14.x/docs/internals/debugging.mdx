@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Enable logs to debug Terraform
 description: >-
   Enable Terraform to generate logs so that you can debug unexpected behaviors.
@@ -20,7 +27,7 @@ Setting `TF_LOG` to `JSON` outputs logs at the `TRACE` level or higher, and uses
 
 ~> **Warning:** The JSON encoding of log files is not considered a stable interface. It may change at any time, without warning. It is meant to support tooling that will be forthcoming, and that tooling is the only supported way to interact with JSON formatted logs.
 
-## Set the `TF_LOG_CORE` variable 
+## Set the `TF_LOG_CORE` variable
 
 Logging can be enabled separately for Terraform itself and the provider plugins
 using the `TF_LOG_CORE` or `TF_LOG_PROVIDER` environment variables. These take

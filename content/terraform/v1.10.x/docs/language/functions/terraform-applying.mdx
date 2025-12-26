@@ -1,7 +1,14 @@
 ---
-page_title: terraform.applying reference - Functions - Configuration Language  
-description: |-  
-  The terraform.applying symbol enables you to determine if Terraform is currently running an apply operation.  
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
+page_title: terraform.applying reference - Functions - Configuration Language
+description: |-
+  The terraform.applying symbol enables you to determine if Terraform is currently running an apply operation.
 ---
 
 # The `terraform.applying` symbol
@@ -19,7 +26,7 @@ locals {
   aws_read_role_arn  = "arn:aws:iam::XXXXX:role/terraform-read"
   aws_write_role_arn = "arn:aws:iam::XXXXX:role/terraform-full"
 
-  # We only need read-only credentials to plan, so if Terraform is applying 
+  # We only need read-only credentials to plan, so if Terraform is applying
   # we want to use our AWS role that allows us to write.
   role_arn = terraform.applying ? local.aws_write_role_arn : local.aws_read_role_arn
 }
@@ -27,7 +34,7 @@ locals {
 
 The `terraform.applying` symbol is an ephemeral value, meaning it is only available during Terraform operations and Terraform does not write this value to plan or state files. Additionally, you can only reference `terraform.applying` in ephemeral contexts:
 
-* In [ephemeral variables](/terraform/language/values/variables#exclude-values-from-state)  
-* In [local values](/terraform/language/values/locals#ephemeral-values)  
-* In [ephemeral resources](/terraform/language/resources/ephemeral)  
+* In [ephemeral variables](/terraform/language/values/variables#exclude-values-from-state)
+* In [local values](/terraform/language/values/locals#ephemeral-values)
+* In [ephemeral resources](/terraform/language/resources/ephemeral)
 * In [ephemeral outputs](/terraform/language/values/outputs#ephemeral-avoid-storing-values-in-state-or-plan-files)

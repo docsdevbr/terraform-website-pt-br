@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Tests - Provider Mocking
 description: >-
   Provide mocked data for providers and resources in your tests.
@@ -65,7 +72,7 @@ run "sets_correct_name" {
 
 From the perspective of a `plan` or `apply` operation executed in a Terraform test file, the mocked provider is creating actual resources with values that match the configuration. These resources are stored in the Terraform state files that `terraform test` creates and holds in memory during test executions.
 
-You can use mocked providers and real providers simulating in a Terraform test. The following example defines two AWS providers, one real and one mocked. You must provide an alias to one of them, as they share the same global `aws` provider namespace. You can then use the `providers` attribute in test `run` blocks to customize which AWS provider to use for each `run` block. 
+You can use mocked providers and real providers simulating in a Terraform test. The following example defines two AWS providers, one real and one mocked. You must provide an alias to one of them, as they share the same global `aws` provider namespace. You can then use the `providers` attribute in test `run` blocks to customize which AWS provider to use for each `run` block.
 
 ```hcl
 # mocked_providers.tftest.hcl
@@ -169,13 +176,13 @@ You can combine the `source` attribute with directly nested `mock_resource` and 
 
 ## Overrides
 
-In addition to mocking providers, you can use the following block types to override specific resources, data sources, and modules: 
+In addition to mocking providers, you can use the following block types to override specific resources, data sources, and modules:
 
 - `override_resource`: Override the values of a resource. Terraform does not call the underlying provider.
 - `override_data`: Override the values of a data source. Terraform does not call the underlying provider.
 - `override_module`: Override the outputs of a module. Terraform does not create any resource in the module.
 
-All three blocks can be placed at the root level of Terraform test files and in Terraform test file `run` blocks. In addition, the `override_resource` and `override_data` blocks can be nested in `mock_provider` blocks and in Terraform mock data files. 
+All three blocks can be placed at the root level of Terraform test files and in Terraform test file `run` blocks. In addition, the `override_resource` and `override_data` blocks can be nested in `mock_provider` blocks and in Terraform mock data files.
 
 Overrides can be used with both real and mocked providers and will provide the computed values instead of the underlying provider.
 
@@ -289,7 +296,7 @@ run "test_run_override" {
 
 In the above example, the override block defined at the file level is used in the first `run` block. Then in the second `run` block, the alternative local override takes precedence over the file level override.
 
-Finally, you can override the entire module with the `override_module` block. In the following example, Terraform overrides the entire module instead of specific resources in the module. 
+Finally, you can override the entire module with the `override_module` block. In the following example, Terraform overrides the entire module instead of specific resources in the module.
 
 ```hcl
 # main.tftest.hcl

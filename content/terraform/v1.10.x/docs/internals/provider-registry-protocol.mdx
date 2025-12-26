@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Provider Registry Protocol
 description: |-
   The provider registry protocol is implemented by a host intending to be the
@@ -298,7 +305,7 @@ A successful result is a JSON object with the following properties:
   request.
 
 * `arch` (required): this must echo back the `arch` parameter from the
-  request. 
+  request.
 
 * `filename` (required): the filename for this provider's zip archive as
   recorded in the "shasums" document, so that Terraform CLI can determine which
@@ -319,7 +326,7 @@ A successful result is a JSON object with the following properties:
 * `shasums_signature_url` (required): a URL from which Terraform can retrieve
   a binary, detached GPG signature for the document at `shasums_url`, signed
   by one of the keys indicated in the `signing_keys` property.
-  
+
 * `shasum` (required): the SHA256 checksum for this provider's zip archive as
   recorded in the shasums document.
 

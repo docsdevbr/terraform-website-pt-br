@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Create and manage resources overview
 description: >-
   Learn about the workflow for creating and managing resources declared with the `resource` block in Terraform.
@@ -6,11 +13,11 @@ description: >-
 
 # Create and manage resources overview
 
-This topic describes how to configure resources using Terraform. For an overview of how to provision the infrastructure defined in your configuration, refer to [Core Terraform workflow](/terraform/intro/core-workflow). 
+This topic describes how to configure resources using Terraform. For an overview of how to provision the infrastructure defined in your configuration, refer to [Core Terraform workflow](/terraform/intro/core-workflow).
 
 ## Introduction
 
-A **resource** is any infrastructure object you create and manage with Terraform, including virtual networks, compute instances, or higher-level components such as DNS records. Resources depend on **providers**, which are plugins that let Terraform interface with external APIs to manage that service's objects. Each provider defines a set of supported resources. Refer to [Providers](/terraform/language/providers) for more information. 
+A **resource** is any infrastructure object you create and manage with Terraform, including virtual networks, compute instances, or higher-level components such as DNS records. Resources depend on **providers**, which are plugins that let Terraform interface with external APIs to manage that service's objects. Each provider defines a set of supported resources. Refer to [Providers](/terraform/language/providers) for more information.
 
 
 ## Write the resource configuration
@@ -31,14 +38,14 @@ Use the Terraform CLI to [apply the configuration](/terraform/cli/commands/apply
 - Destroys resources that exist in the state but no longer exist in the configuration.
 - Updates any resources in place if their arguments have changed.
 - Destroys and re-creates resources whose arguments have changed but cannot be updated in-place due to remote API limitations.
-- Updates the [state file](/terraform/language/state) so that the configuration, real infrastructure, and state match. 
+- Updates the [state file](/terraform/language/state) so that the configuration, real infrastructure, and state match.
 
 ## Manage resources
 
 As your infrastructure needs change, you may want to add or remove resources from your configuration, refactor collections of resources into reusable modules, or remove or retire resources from your cloud provider or state file. Refer to the following topics for more information about managing resources:
 
 - [Creating modules](/terraform/language/modules/develop) provides instructions on how to collect resources into reusable modules.
-- [Refactoring modules](/terraform/language/modules/develop/refactoring) provides instructions on moving and renaming sources. 
+- [Refactoring modules](/terraform/language/modules/develop/refactoring) provides instructions on moving and renaming sources.
 - [Remove a resource from state](/terraform/language/state/remove) describes how to remove a resource from state without destroying the actual infrastructure object.
 - [Destroy a resource](/terraform/language/resources/destroy) describes how to remove a resource from state and destroy the actual infrastructure.
 

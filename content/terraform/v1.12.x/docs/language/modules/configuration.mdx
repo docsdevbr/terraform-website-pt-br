@@ -1,6 +1,13 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Use modules in your configuration
-description: Learn how to configure the `module` block to provision collections of resources. 
+description: Learn how to configure the `module` block to provision collections of resources.
 ---
 
 # Use modules in your configuration
@@ -12,25 +19,25 @@ This page describes how to integrate modules into your configuration so that you
 ## Overview
 
 You can provision collections of resources defined in reusable configurations called modules. After identifying the module you want to use, complete the following steps to integrate modules into your configuration:
- 
+
 - Add a `module` block to your configuration and configure the source, version, and required inputs.
 - If necessary, configure resources in the root module to reference outputs from the child module.
-- Initialize the workspace to install the module. Terraform clones the module source configurations into a hidden subdirectory of the workspace’s working directory.  
+- Initialize the workspace to install the module. Terraform clones the module source configurations into a hidden subdirectory of the workspace’s working directory.
 - Apply the configuration to provision the module's resources.
 
 You can also perform the following actions when integrating modules:
 
 - [Transfer resource state into modules](#transfer-resource-state-into-modules)
 - [Reprovision resources within a module](#reprovision-module-resources)
-- [Remove modules from your configuration](#remove-modules-from-your-configuration) 
+- [Remove modules from your configuration](#remove-modules-from-your-configuration)
 
 
 
 ## Add a `module` block
 
-Add the [`module` block](/terraform/language/block/module) to your configuration and configure the `source` argument, which tells Terraform where to get the child module's configuration files. 
+Add the [`module` block](/terraform/language/block/module) to your configuration and configure the `source` argument, which tells Terraform where to get the child module's configuration files.
 
-You can specify modules hosted on the public or a private Terraform registry, Git repositories, object storage services, and the local file system. Depending on the module source, you can also configure how Terraform installs the module. Refer to the [`source` argument reference](/terraform/language/block/module#source) for details.  
+You can specify modules hosted on the public or a private Terraform registry, Git repositories, object storage services, and the local file system. Depending on the module source, you can also configure how Terraform installs the module. Refer to the [`source` argument reference](/terraform/language/block/module#source) for details.
 
 ## Install a specific version of the module
 
@@ -38,7 +45,7 @@ If you are using modules from a registry, you can add the [`version` argument](/
 
 If you are using modules hosted in GitHub, BitBucket, or another Git repository, Terraform clones and uses the default branch referenced by `HEAD`. You can add the `ref` query parameter to the location specified in the `source` argument to reference any value supported by the `git checkout` command, such as a branch, SHA-1 hash, or tag.
 
-In the following example, Terraform selects the module version from a Git repository tagged as  `v1.2.0`: 
+In the following example, Terraform selects the module version from a Git repository tagged as  `v1.2.0`:
 
 ```hcl
 module "vpc" {
@@ -46,7 +53,7 @@ module "vpc" {
 }
 ```
 
-You can also source a module using its SHA-1 hash: 
+You can also source a module using its SHA-1 hash:
 
 ```hcl
 module "storage" {
@@ -87,14 +94,14 @@ module "servers" {
 
 You can configure Terraform to provision multiple instances of the same module resources in one `module` block, instead of adding multiple blocks to your configuration. Add either of the following meta-arguments to your `module` block:
 
-- [`count`](/terraform/language/block/module#count): Use this argument to state how many instances of a module to provision. All instances have the same configuration. 
-- [`for_each`](/terraform/language/block/module#for_each): Use this argument to loop through a set of keys so that Terraform provisions similar module instances. 
+- [`count`](/terraform/language/block/module#count): Use this argument to state how many instances of a module to provision. All instances have the same configuration.
+- [`for_each`](/terraform/language/block/module#for_each): Use this argument to loop through a set of keys so that Terraform provisions similar module instances.
 
 Refer to [Create multiple instances of module resources](/terraform/language/block/module#create-multiple-instances-of-module-resources) for examples.
-   
+
 ## Set dependencies
 
-Terraform parallelizes module resource creation, but some modules may depend on outputs from other upstream resources. If a module definition references a resource in its arguments, Terraform identifies the implicit dependency and implements the changes in the appropriate order. 
+Terraform parallelizes module resource creation, but some modules may depend on outputs from other upstream resources. If a module definition references a resource in its arguments, Terraform identifies the implicit dependency and implements the changes in the appropriate order.
 
 You can also explicitly configure dependencies using the [`depends_on` argument](/terraform/language/block/module#depends_on). Terraform completes all operations on the upstream resource before performing operations on the module containing the `depends_on` argument.
 
@@ -102,13 +109,13 @@ Refer to [Specify a dependency](/terraform/language/block/module#specify-a-depen
 
 ## Use an alternate provider configuration
 
-By default, Terraform applies the default provider based on the module resource type, but you can create multiple provider configurations and use a non-default configuration for specific modules. To instruct Terraform to apply an alternate provider configuration, add a [`provider`](/terraform/language/block/module#provider) argument to your `module` block. 
+By default, Terraform applies the default provider based on the module resource type, but you can create multiple provider configurations and use a non-default configuration for specific modules. To instruct Terraform to apply an alternate provider configuration, add a [`provider`](/terraform/language/block/module#provider) argument to your `module` block.
 
 Refer to [Select an alternate provider configuration](/terraform/language/block/module#select-an-alternate-provider-configuration) for an example.
 
 ## Reference module output values
 
-The resources defined in a module form a self-contained group of resources. Module authors commonly define outputs that expose attribute values for the resources created by the module. You can reference the values in the parent module using the [`module.<MODULE-NAME>.<OUTPUT-NAME>` expression](/terraform/language/expressions/references#child-module-outputs). Refer to the module documentation for information about its outputs. 
+The resources defined in a module form a self-contained group of resources. Module authors commonly define outputs that expose attribute values for the resources created by the module. You can reference the values in the parent module using the [`module.<MODULE-NAME>.<OUTPUT-NAME>` expression](/terraform/language/expressions/references#child-module-outputs). Refer to the module documentation for information about its outputs.
 
 In the following example, the `aws_subnet` resource references the value of the VCP ID output by the `vcp` module:
 
@@ -128,7 +135,7 @@ resource "aws_subnet" "main" {
  }
 ```
 
-For more information about how outputs work, refer to the [`output` block](/terraform/language/block/output) reference. 
+For more information about how outputs work, refer to the [`output` block](/terraform/language/block/output) reference.
 
 ## Transfer resource state into modules
 
@@ -138,13 +145,13 @@ When you refactor your configuration to use child modules, you may want to move 
 
 After configuring the `module` block in the root or calling module, run `terraform init` to download the module files into the local working directory. Refer to the [`terraform init` command](/terraform/cli/commands/init) reference for details.
 
-If you change the `source` argument or change the `version` argument for a module in a registry, you must rerun `terraform init`. For modules that are already installed, include the `-upgrade` flag to upgrade the module to the latest version allowed by the version constraint.   
+If you change the `source` argument or change the `version` argument for a module in a registry, you must rerun `terraform init`. For modules that are already installed, include the `-upgrade` flag to upgrade the module to the latest version allowed by the version constraint.
 
 ## Provision modules
 
 Run the `terraform plan` command to create preview changes. When you are satisfied with the plan, run `terraform apply` to create the resources defined by the module. Refer to the [`terraform apply` command](/terraform/cli/commands/apply) reference for details.
 
-## Reprovision module resources 
+## Reprovision module resources
 
 To reprovision a specific resource managed by a module, add the [`-replace` flag](/terraform/cli/commands/plan#replace-address) and the resource address to your `terraform apply` command. If the resource you want to replace belongs to a resource within a nested module, specify the full path to that resource, including the nested module. In the following example, Terraform reprovisions the `aws_instance.example` resources managed by the `example` module:
 
@@ -154,7 +161,7 @@ $ terraform apply -replace=module.example.aws_instance.example
 terraform plan -replace=module.example.module.from-child2.aws_instance.child2-inst
 ```
 
-Replacing resources is a disruptive operation. You can only select individual resource instances with the `-replace` CLI option. Add multiple `-replace` options to replace more than one resource in a single command.  
+Replacing resources is a disruptive operation. You can only select individual resource instances with the `-replace` CLI option. Add multiple `-replace` options to replace more than one resource in a single command.
 
 ## Remove modules from your configuration
 
@@ -168,7 +175,7 @@ You can also remove a module from your Terraform state without destroying the re
 1. And add the `lifecycle` block to your `removed` block.
 1. Add the `destroy` argument and set it to `false.
 
-The following example removes the `module.example` resources from the Terraform state without destroying them: 
+The following example removes the `module.example` resources from the Terraform state without destroying them:
 
 ```hcl
 removed {

@@ -1,11 +1,18 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: for_each meta-argument reference
 description: Learn how the `for_each` meta-argument works in Terraform configuration.
 ---
 
 # `for_each` reference
 
-By default, [`resource` block](/terraform/language/block/resource) configures one real infrastructure object. Similarly, a [`module` block](/terraform/language/block/module) includes a child module's contents into the configuration one time. 
+By default, [`resource` block](/terraform/language/block/resource) configures one real infrastructure object. Similarly, a [`module` block](/terraform/language/block/module) includes a child module's contents into the configuration one time.
 
 Use the `for_each` meta-argument to manage several similar objects, such as a fixed pool of compute instances, without writing a separate block for each object. When a `resource`, `module`, or `ephemeral` block includes a `for_each` argument, Terraform creates an instance for each member of the list or map specified as the value.
 
@@ -57,7 +64,7 @@ an object is created.
 
 The `for_each` value must be a map or set with one element per desired resource
 instance. To use a sequence as the `for_each` value, you must use an expression
-that explicitly returns a set value, such as the [`toset` function](/terraform/language/functions/toset). 
+that explicitly returns a set value, such as the [`toset` function](/terraform/language/functions/toset).
 
 To prevent unexpected behavior during conversion, the `for_each` argument does not implicitly convert lists or tuples to sets. To declare resource instances based on a nested data structure or combinations of elements from multiple data structures, you can use Terraform expressions and functions to derive a suitable value. Refer to the following examples for more information:
 

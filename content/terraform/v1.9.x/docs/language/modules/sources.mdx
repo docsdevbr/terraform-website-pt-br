@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Module Sources
 description: >-
   The source argument tells Terraform where to find child modules's
@@ -12,7 +19,7 @@ The `source` argument in [a `module` block](/terraform/language/modules/syntax)
 tells Terraform where to find the source code for the desired child module.
 
 Terraform uses this during the module installation step of `terraform init`
-to download the source code to a directory on local disk so that other Terraform commands can use it. 
+to download the source code to a directory on local disk so that other Terraform commands can use it.
 
 > **Hands-on:** Try the [Use Modules From the Registry](/terraform/tutorials/modules/module-use) or [Build and Use a Local Module](/terraform/tutorials/modules/module-create) tutorials.
 
@@ -263,7 +270,7 @@ to reduce the time taken to retrieve the remote repository.
 The `depth` URL argument corresponds to
 [the `--depth` argument to `git clone`](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt),
 which instructs Git to create a shallow clone that includes
-only the specified number of commits in the history. 
+only the specified number of commits in the history.
 Setting `depth` to `1` is suitable for most cases. This is because Terraform only uses the most recently selected commit to find the source.
 ```hcl
 module "vpc" {
@@ -361,7 +368,7 @@ In either case, the result is interpreted as another module source address
 using one of the forms documented elsewhere on this page.
 
 If an HTTP/HTTPS URL requires authentication credentials, use a `.netrc`
-file to configure the credentials. By default, Terraform searches for the `.netrc` file 
+file to configure the credentials. By default, Terraform searches for the `.netrc` file
 in your HOME directory. However, you can override the default filesystem location by setting the `NETRC` environment variable. For information on the `.netrc` format,
 refer to [the documentation for using it in `curl`](https://everything.curl.dev/usingcurl/netrc).
 

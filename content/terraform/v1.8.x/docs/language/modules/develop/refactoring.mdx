@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Refactoring
 description: How to make backward-compatible changes to modules already in use.
 ---
@@ -104,11 +111,11 @@ it covers both `aws_instance.a[0]` and `aws_instance.a[1]` without the need
 to identify each one separately.
 
 Each resource type has a separate schema so objects of different types
-are not typically compatible. You can always use the `moved` block to change 
+are not typically compatible. You can always use the `moved` block to change
 the name of a resource, but some providers also let you change an object from
 one resource type to another. Refer to the provider documentation for details
-on which resources can move between types. You _cannot_ use the `moved` 
-block to change a managed resource (a `resource` block) into a data 
+on which resources can move between types. You _cannot_ use the `moved`
+block to change a managed resource (a `resource` block) into a data
 resource (a `data` block).
 
 ## Enabling `count` or `for_each` For a Resource

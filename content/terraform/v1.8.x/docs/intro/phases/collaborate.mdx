@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Collaborate with Terraform
 description: Ease collaboration and coordinate execution across your team.
 ---
@@ -12,16 +19,16 @@ Multiple developers working on the same codebase introduces a new set of challen
 As more team members work on Terraform configuration, you should implement remote state storage to support collaboration. HCP Terraform and remote backends implement several features to help you safely manage your Terraform state:
 
 - **Storage:** Remote state storage lets you manage infrastructure collaboratively and securely. Different state stores may also support additional features for state management, such as encryption, versioning, automated backups, redundancy, and more.
-- **Locking:** Some remote state storage options support [state locking](/terraform/language/state/locking). State locking prevents concurrent Terraform operations on single state files. 
-- **Execution:** HCP Terraform and Terraform Enterprise support executing Terraform operations in stable, remote environments. 
+- **Locking:** Some remote state storage options support [state locking](/terraform/language/state/locking). State locking prevents concurrent Terraform operations on single state files.
+- **Execution:** HCP Terraform and Terraform Enterprise support executing Terraform operations in stable, remote environments.
 
-Since state files may contain sensitive data, refer to your backend documentation and, if supported, use [state encryption](/well-architected-framework/security/security-sensitive-data). [HCP Terraform and Terraform Enterprise](/terraform/cloud-docs/architectural-details/data-security#data-security) both automatically encrypt state, and [AWS, GCP, and Azure](/well-architected-framework/security/security-sensitive-data#storing-terraform-state) backends can implement encryption as well. 
+Since state files may contain sensitive data, refer to your backend documentation and, if supported, use [state encryption](/well-architected-framework/security/security-sensitive-data). [HCP Terraform and Terraform Enterprise](/terraform/cloud-docs/architectural-details/data-security#data-security) both automatically encrypt state, and [AWS, GCP, and Azure](/well-architected-framework/security/security-sensitive-data#storing-terraform-state) backends can implement encryption as well.
 
 As your team grows, you may run into the risk of concurrent operations on state files. If supported by your remote storage solution, use [state locking](/terraform/language/state/locking) to prevent unpredictable outcomes or corrupted data. [HCP Terraform and Terraform Enterprise](/terraform/cli/cloud/settings) support state locking by default, but other state storage implementations require additional configuration. For example, the [AWS S3 remote backend](/terraform/language/settings/backends/s3) requires that a [DynamoDB table](/terraform/language/settings/backends/s3#dynamodb-table-permissions) for state locking.
 
 |                              | Storage |    Locking   | Execution |
 |------------------------------|---------|--------------|-----------|
-| HCP Terraform / Enterprise |   Yes   |     Yes      |    Yes    | 
+| HCP Terraform / Enterprise |   Yes   |     Yes      |    Yes    |
 | Amazon S3                    |   Yes   | via DynamoDB |    No     |
 | Azure Storage                |   Yes   |     Yes      |    No     |
 | Google Cloud Storage         |   Yes   |     Yes      |    No     |
@@ -45,6 +52,6 @@ Terraform [integrates](/terraform/tutorials/automation/automate-terraform) with 
 
 As Terraform usage expands across your organization, you will need to decide how to define boundaries of infrastructure ownership.
 
-You will also need to decide on a cloud deployment strategy based on your organization's practices and needs. Possible approaches include using a single account in a single cloud provider, a hybrid or multi-cloud approach, or to divide up resources across accounts by environment. Regardless of your implementation, Terraform lets you manage your infrastructure with a consistent workflow. 
+You will also need to decide on a cloud deployment strategy based on your organization's practices and needs. Possible approaches include using a single account in a single cloud provider, a hybrid or multi-cloud approach, or to divide up resources across accounts by environment. Regardless of your implementation, Terraform lets you manage your infrastructure with a consistent workflow.
 
 [Learn how to scale Terraform](/terraform/intro/phases/scale).

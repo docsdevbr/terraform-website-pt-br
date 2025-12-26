@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Version Constraints - Configuration Language
 description: >-
   Version constraint strings specify a range of acceptable versions for modules,
@@ -45,9 +52,9 @@ The following operators are valid:
 
 - `~>`: Allows only the _rightmost_ version component to increment. This format is referred to as the _pessimistic constraint_ operator. For example,
   to allow new patch releases within a specific minor release, use the full
-  version number: 
-  - `~> 1.0.4`: Allows Terraform to install `1.0.5` and `1.0.10` but not `1.1.0`. 
-  - `~> 1.1`: Allows Terraform to install `1.2` and `1.10` but not `2.0`. 
+  version number:
+  - `~> 1.0.4`: Allows Terraform to install `1.0.5` and `1.0.10` but not `1.1.0`.
+  - `~> 1.1`: Allows Terraform to install `1.2` and `1.10` but not `2.0`.
 
 ## Version Constraint Behavior
 

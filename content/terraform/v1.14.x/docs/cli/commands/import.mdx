@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: terraform import command reference
 description: The `terraform import` command imports existing resources into Terraform state.
 ---
@@ -68,7 +75,7 @@ The command-line flags are all optional. The following flags are available:
   [literal expressions](/terraform/language/expressions/types) in the
   Terraform language, so list and map values can be specified via this flag.
 - `-var-file=foo` - Set variables in the Terraform configuration from
-  a [variable file](/terraform/language/parameterize#variable-definition-files). If
+  a [variable file](/terraform/language/values/variables#variable-definition-files). If
   `terraform.tfvars` or any `.auto.tfvars` files are present in the current
   directory, they are automatically loaded. Terraform loads `terraform.tfvars`
   first and the `.auto.tfvars` files after in alphabetical order. Any files

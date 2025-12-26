@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: check block reference for the Terraform configuration language
 description: How to use the `check` block to validate infrastructure outside of the usual resource lifecycle.
 ---
@@ -122,7 +129,7 @@ The arguments within a `data` block are provider-specific. Refer to the [registr
 
 ### `depends_on`
 
-The `depends_on` argument specifies an upstream resource that the `data` block depends on. Terraform must complete all operations on the upstream resource before fetching information from the `data` block. 
+The `depends_on` argument specifies an upstream resource that the `data` block depends on. Terraform must complete all operations on the upstream resource before fetching information from the `data` block.
 
 ```hcl
 check "unique_name" {

@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Refactor Terraform state
 description: >-
   Learn how to move resources between state files and identify dependencies between resources.
@@ -23,7 +30,7 @@ The following are some common opportunities for refactoring:
 
 ## Plan your refactored state
 
-You must plan how you will group resources before starting refactoring your configuration. 
+You must plan how you will group resources before starting refactoring your configuration.
 Consider the following resource properties when deciding how to group resources together:
 
 - **Volatility and rate of change:** By exposing your long-living infrastructure to unnecessary volatility, you introduce more opportunities for accidental changes. For example, you may scale the number of compute resources your configuration deploys several times a day, but your networking configuration may stay static for months. By managing your network resources separately, you reduce the risk of making unintended changes to it.
@@ -146,10 +153,10 @@ Then, in your destination configuration, complete the following steps to import 
         resource "aws_instance" "example" {
     ```
 
-1. Run `terraform apply` to complete the import. 
+1. Run `terraform apply` to complete the import.
 
     ```shell-session
-    $ terraform apply 
+    $ terraform apply
 
     ##...
 
@@ -172,15 +179,15 @@ After you complete the migration you can optionally remove the `removed` and `im
 Refer to the following documentation to learn more about the `removed` and `import` blocks:
 
 - [`removed` block reference](/terraform/language/block/removed)
-- [Import block reference documentation](/terraform/language/import) 
+- [Import block reference documentation](/terraform/language/import)
 
 ### Move resources directly to a new state file
 
-You can also use the `terraform state mv` command to move resources directly between state files. 
+You can also use the `terraform state mv` command to move resources directly between state files.
 
 <Warning>
 
-The `-state` and `-state-out` flags are legacy options that Terraform maintains for backwards compatibility. 
+The `-state` and `-state-out` flags are legacy options that Terraform maintains for backwards compatibility.
 
 This approach also uses the `terraform state pull` and `terraform state push` commands. While Terraform performs safety checks when you manually update remote state, this method does have some risk of corrupting your remote state.
 

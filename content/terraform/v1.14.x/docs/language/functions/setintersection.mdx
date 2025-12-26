@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: setintersection function reference - Functions - Configuration Language
 description: |-
   The setintersection function takes multiple arrays and produces a single array
@@ -8,16 +15,16 @@ description: |-
 # `setintersection` function reference
 
 This topic provides reference information about the `setintersection` function,
-which computes the intersection of the specified sets. 
+which computes the intersection of the specified sets.
 
 ## Introduction
 
 The `setintersection` function takes multiple sets and produces a single set
 containing only the elements that all of the given sets have in common.
-In other words, `setintersection` computes the intersection of the sets. 
+In other words, `setintersection` computes the intersection of the sets.
 Refer to Wikipedia's [Intersection (set
 theory)](https://en.wikipedia.org/wiki/Intersection_\(set_theory\)) article
-for a mathematical explanantion of set theory intersection. 
+for a mathematical explanantion of set theory intersection.
 
 ## Syntax
 
@@ -28,7 +35,7 @@ setintersection(sets...)
 ```
 
 Replace `sets...` with a comma-delimited list of sets such as `["a","b"], ["a","c","g"]`. The elements of
-the different sets do not have to be the same type. 
+the different sets do not have to be the same type.
 
 The `setintersection` result is an unordered set.
 
@@ -53,7 +60,7 @@ toset([
 ])
 ```
 
-This examples pass in sets of different lengths and element types. 
+This examples pass in sets of different lengths and element types.
 The result is a set of two string elements.
 
 ```hcl

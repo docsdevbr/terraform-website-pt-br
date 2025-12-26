@@ -22,16 +22,16 @@ comunidade.
 
 ## Apoio
 
-Você pode apoiar o projeto através do [GitHub Sponsors][github-sponsors] ou
-[Pix][sponsor].
+Visite nossa [página para pessoas apoiadoras][sponsor] para saber como você pode
+apoiar o projeto.
 
 ## Licença
 
-Copyright (c) 2024 HashiCorp, Inc.<br>
+Copyright (c) 2024 HashiCorp, Inc.<br/>
 Terraform e o logotipo do Terraform são marcas registradas da HashiCorp.
 
 Documentação licenciada sob a
-[Business Source License, Versão 1.1][license].<br>
+[Business Source License, Versão 1.1][license].<br/>
 A obra original foi traduzida do inglês para o português brasileiro.
 
 [badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/terraform-website-pt-br
@@ -54,7 +54,7 @@ A obra original foi traduzida do inglês para o português brasileiro.
 
 [license]: LICENSE
 
-[page]: https://pt.docs.dev.br/p/terraform/
+[page]: https://pt.docs.dev.br/tech/t/terraform/
 
 [readme-en]: README.EN.md
 

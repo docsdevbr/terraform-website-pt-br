@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: The lifecycle Meta-Argument - Configuration Language
 description: >-
   The meta-arguments in a lifecycle block allow you to customize resource
@@ -50,12 +57,12 @@ The arguments available within a `lifecycle` block are `create_before_destroy`,
   type before using `create_before_destroy` with it.
 
   Note that Terraform propagates and applies the `create_before_destroy` meta-attribute
-  behaviour to all resource dependencies. For example, if `create_before_destroy` is enabled on resource A but not on resource B, but resource A is dependent on resource B, then Terraform enables `create_before_destroy` for resource B 
+  behaviour to all resource dependencies. For example, if `create_before_destroy` is enabled on resource A but not on resource B, but resource A is dependent on resource B, then Terraform enables `create_before_destroy` for resource B
   implicitly by default and stores it to the state file. You cannot override `create_before_destroy`
   to `false` on resource B because that would imply dependency cycles in the graph.
 
   Destroy provisioners of this resource do not run if `create_before_destroy`
-  is set to `true`. 
+  is set to `true`.
 
 * `prevent_destroy` (bool) - This meta-argument, when set to `true`, will
   cause Terraform to reject with an error any plan that would destroy the

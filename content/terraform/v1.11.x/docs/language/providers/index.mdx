@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Providers - Configuration Language
 description: >-
   An overview of how to install and use providers, Terraform plugins that
@@ -95,17 +102,17 @@ installing providers.
 
 ### Private Providers
 
-If you are using a provider that is not in a Hashicorp-hosted registry, you may 
-need to attach additional credentials to your requests to external registries. 
+If you are using a provider that is not in a Hashicorp-hosted registry, you may
+need to attach additional credentials to your requests to external registries.
 You do not need these credentials if your provider is in the Terraform public
 registry or the HCP Terraform private registry.
 
-By default, Terraform only authenticates the opening request from a provider to 
-the registry. The registry responds with 
-[follow-up URLs](/terraform/internals/provider-registry-protocol#find-a-provider-package) 
-that Terraform makes requests to, such as telling Terraform to download the 
-provider or the `SHASUMS` file. Hashicorp-hosted registries do not require 
-additional authentication for these follow-up requests. If your registry does 
+By default, Terraform only authenticates the opening request from a provider to
+the registry. The registry responds with
+[follow-up URLs](/terraform/internals/provider-registry-protocol#find-a-provider-package)
+that Terraform makes requests to, such as telling Terraform to download the
+provider or the `SHASUMS` file. Hashicorp-hosted registries do not require
+additional authentication for these follow-up requests. If your registry does
 require additional credentials for follow-up requests, you can use a `.netrc`
 file to provide those credentials.
 

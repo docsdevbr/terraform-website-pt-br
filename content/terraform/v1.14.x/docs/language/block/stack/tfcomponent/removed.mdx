@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: removed block reference for Terraform component configurations
 description: Use the `removed` block to systematically remove components from your component configuration while ensuring HCP Terraform can properly clean up resources.
 ---
@@ -154,7 +161,8 @@ removed {
 
 </Tabs>
 
-You can use `for_each` to remove components from specific regions or environments.
+
+The `for_each` meta-argument is useful when you want to remove components from specific regions or environments.
 
 `for_each` is a **meta-argument**. Meta-arguments are built into the Terraform language and control how Terraform creates and manages resources. Refer to the [`for_each` reference](/terraform/language/meta-arguments/for_each) for details about how the argument works.
 

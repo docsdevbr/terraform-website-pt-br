@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Style Guide - Configuration Language
 description: >-
   Learn recommended style conventions for Terraform configuration and
@@ -431,7 +438,7 @@ Do not commit:
 
 - Your `terraform.tfstate` state file, including `terraform.tfstate.*` backup state files.
 - Your `.terraform.tfstate.lock.info` file. Terraform creates and deletes this file automatically when you run a `terraform apply` command and contains info about your [state lock](/terraform/language/state/locking)
-- Your `.terraform` directory, where Terraform downloads providers and child modules. 
+- Your `.terraform` directory, where Terraform downloads providers and child modules.
 - [Saved plan files](/terraform/cli/commands/plan#out-filename) that you create when you include the `-out` flag when you run `terraform plan`.
 - Any `.tfvars` files that contain sensitive information.
 

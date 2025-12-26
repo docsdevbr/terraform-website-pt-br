@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Upgrading to Terraform v1.4
 description: Upgrading to Terraform v1.4
 ---
@@ -19,9 +26,9 @@ See the full [changelog for more details](https://github.com/hashicorp/terraform
 
 **_This change affects those who rely upon global provider caching and not the dependency lock file._**
 
-`terraform init` now ignores entries in the optional global provider cache directory unless they match a checksum already tracked in the current configuration's dependency lock file. 
+`terraform init` now ignores entries in the optional global provider cache directory unless they match a checksum already tracked in the current configuration's dependency lock file.
 
-Before this change Terraform could not determine the full set of checksums to include in the lockfile when installing a new provider for the first time. Now it can. Once the lock file has been updated to include a checksum covering the item in the global cache, Terraform will then use the cache entry for subsequent installation of the same provider package. 
+Before this change Terraform could not determine the full set of checksums to include in the lockfile when installing a new provider for the first time. Now it can. Once the lock file has been updated to include a checksum covering the item in the global cache, Terraform will then use the cache entry for subsequent installation of the same provider package.
 
 For more details and how to keep using the prior undesirable behavior, please see the [documentation](/cli/config/config-file#allowing-the-provider-plugin-cache-to-break-the-dependency-lock-file).
 
@@ -29,4 +36,4 @@ For more details and how to keep using the prior undesirable behavior, please se
 
 When interpreting the hostname portion of a provider source address or the address of a module in a module registry, Terraform now uses non-transitional IDNA2008 mapping rules instead of the transitional mapping rules. Terraform no longer accepts the characters `ß` (U+00DF, "LATIN SMALL LETTER SHARP S") and `ς` (U+03C2, "GREEK SMALL LETTER FINAL SIGMA") Use the available alternative forms for both characters instead.
 
-This change better adheres to the [the WHATWG URL spec's rules for interpreting non-ASCII domain names](https://url.spec.whatwg.org/#concept-domain-to-ascii). Terraform tries to interpret host names the same way that web browsers do. For some hostnames containing non-ASCII characters this may cause Terraform to now request a different "punycode" hostname when resolving. 
+This change better adheres to the [the WHATWG URL spec's rules for interpreting non-ASCII domain names](https://url.spec.whatwg.org/#concept-domain-to-ascii). Terraform tries to interpret host names the same way that web browsers do. For some hostnames containing non-ASCII characters this may cause Terraform to now request a different "punycode" hostname when resolving.

@@ -1,14 +1,21 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: filesha1 - Functions - Configuration Language
 description: The filesha1 function computes the SHA1 hash of the contents of a given file and encodes it as hex.
 ---
 
 # `filesha1` function reference
-This topic provides reference information about the `filesha1` function, which calculates the SHA-1 hash of a file's contents. 
+This topic provides reference information about the `filesha1` function, which calculates the SHA-1 hash of a file's contents.
 
 ## Introduction
 
-The `filesha1` is a variant of [`sha1`](/terraform/language/functions/sha1) that hashes the contents of a given file rather than a literal string. 
+The `filesha1` is a variant of [`sha1`](/terraform/language/functions/sha1) that hashes the contents of a given file rather than a literal string.
 
 Use the `filesha1` function instead of wrapping the `file` function in a `sha1` function, for example `sha1(file(filename))`, because [`file`](/terraform/language/functions/file) accepts only UTF-8 text. As a result, you cannot use `sha1(file(filename))` to create hashes for binary files.
 
@@ -19,7 +26,7 @@ Use the `filesha1` function instead of wrapping the `file` function in a `sha1` 
 Use the filesha1 function with the following syntax:
 
 ```hcl
-filesha1(path) 
+filesha1(path)
 ```
 
 The `path` is the relative or absolute file path to the file whose SHA-1 hash you want to compute.
@@ -36,8 +43,8 @@ d3486ae9136e7856bc42212385ea797094475802
 In the following example the `filesha1` function computes the SHA-1 hash of the file `example.txt` located in the current module's directory. The result is a 40-character hexadecimal string representing the SHA-1 hash.
 
 ```hcl
-output "file_hash" { 
-  value = filesha1("${path.module}/example.txt") 
+output "file_hash" {
+  value = filesha1("${path.module}/example.txt")
 }
 ```
 

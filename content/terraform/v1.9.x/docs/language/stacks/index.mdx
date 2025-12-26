@@ -1,11 +1,18 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Stacks overview
 description: Stacks are a configuration layer that simplify managing infrastructure modules. Learn how Stacks help you provision and coordinate your infrastructure lifecycle at scale.
 ---
 
 # Stacks overview
 
-As your infrastructure grows, managing Terraform configurations becomes increasingly complex. Stacks are a powerful configuration layer in HCP Terraform that simplifies managing your infrastructure modules and then repeating that infrastructure. 
+As your infrastructure grows, managing Terraform configurations becomes increasingly complex. Stacks are a powerful configuration layer in HCP Terraform that simplifies managing your infrastructure modules and then repeating that infrastructure.
 
 > **Hands-on**: Try out the [Deploy a Stack with HCP Terraform](/terraform/tutorials/cloud/stacks-deploy) tutorial to get started with Stacks quickly.
 
@@ -43,7 +50,7 @@ The overall process for managing your infrastructure using Stacks consists of th
 
 Consider your current infrastructure lifecycle and how the pieces interact with each other. Then, determine how to break down your infrastructure into components and think about how you want to deploy the infrastructure your Stack describes. Refer to [Design a Stack](/terraform/language/stacks/design) to learn more.
 
-### Write a Stack configuration 
+### Write a Stack configuration
 
 Configure and define your Stack in a `tfstack.hcl` file. To define a Stack, add and configure `component` blocks, each representing an individual Terraform module. Refer to [Define configuration](/terraform/language/stacks/create/config) to learn more.
 

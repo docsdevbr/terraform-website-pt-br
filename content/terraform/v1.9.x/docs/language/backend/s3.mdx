@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: 'Backend Type: s3'
 description: Terraform can store state remotely in S3 and lock that state with DynamoDB.
 ---
@@ -246,7 +253,7 @@ The argument `assume_role` contains the following arguments:
 * `duration` - (Optional) The duration individual credentials will be valid.
   Credentials are automatically renewed up to the maximum defined by the AWS account.
   Specified using the format `<hours>h<minutes>m<seconds>s` with any unit being optional.
-  For example, an hour and a half can be specified as `1h30m` or `90m`. 
+  For example, an hour and a half can be specified as `1h30m` or `90m`.
   Must be between 15 minutes (15m) and 12 hours (12h).
 * `external_id` - (Optional) External identifier to use when assuming the role.
 * `policy` - (Optional) IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
@@ -297,7 +304,7 @@ The following `assume_role_with_web_identity` configuration block is optional:
 * `duration` - (Optional) The duration individual credentials will be valid.
   Credentials are automatically renewed up to the maximum defined by the AWS account.
   Specified using the format `<hours>h<minutes>m<seconds>s` with any unit being optional.
-  For example, an hour and a half can be specified as `1h30m` or `90m`. 
+  For example, an hour and a half can be specified as `1h30m` or `90m`.
   Must be between 15 minutes (15m) and 12 hours (12h).
 * `policy` - (Optional) IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
 * `policy_arns` - (Optional) Set of Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.

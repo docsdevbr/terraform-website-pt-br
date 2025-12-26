@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Testing Terraform - Terraform CLI
 description: >-
   Write structured tests and validations for your configuration to ensure
@@ -53,7 +60,7 @@ The Terraform `test` command also executes any validations within your configura
 
 You can write many validations as test assertions, but there are specific use cases for both.
 
-Validations are executed during Terraform plan and apply operations, and the Terraform `test` command also runs validations while executing tests. Therefore, use validations to validate aspects of your configuration that should always be true and could impact the valid execution of your infrastructure. 
+Validations are executed during Terraform plan and apply operations, and the Terraform `test` command also runs validations while executing tests. Therefore, use validations to validate aspects of your configuration that should always be true and could impact the valid execution of your infrastructure.
 
 Module authors should note that validations are executed and exposed to module users, so if they fail, ensure the failure messages are understandable and actionable.
 

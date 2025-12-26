@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Refactor modules
 description: How to make backward-compatible changes to modules already in use.
 ---
@@ -22,7 +29,7 @@ You can use `moved` blocks for the following use cases:
 - [Rename a module call](#rename-a-module-call)
 - [Split a module](#split-a-module)
 
-When the module or resource is no longer necessary, you can [remove `moved` blocks](#remove-a-move-block) from the configuration. Note that removing a `moved` block is a breaking change.
+When the module or resource is no longer necessary, you can [remove `moved` blocks](#remove-a-moved-block) from the configuration. Note that removing a `moved` block is a breaking change.
 
 ## Requirements
 
@@ -109,7 +116,7 @@ resource (a `data` block).
 
 ## Create multiple instances
 
-You can use a `moved` block when creating mulitple instances of a resource or module call while preserving the original instance.
+You can use a `moved` block when creating multiple instances of a resource or module call while preserving the original instance.
 
 ### Enable `count` or `for_each` for a resource
 
@@ -416,7 +423,7 @@ moved {
 }
 ```
 
-## Remove a `move` block
+## Remove a `moved` block
 
 Over time, a long-lasting module may accumulate many `moved` blocks.
 

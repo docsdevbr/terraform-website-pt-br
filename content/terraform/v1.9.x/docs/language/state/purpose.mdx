@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: State
 description: >-
   Terraform must store state about your managed infrastructure and
@@ -37,9 +44,9 @@ Terraform uses its own state structure.
 
 Terraform expects that each remote object is bound to only one resource instance in the configuration.
 If a remote object is bound to multiple resource instances, the mapping from configuration to the remote
-object in the state becomes ambiguous, and Terraform may behave unexpectedly. Terraform can guarantee 
-a one-to-one mapping when it creates objects and records their identities in the state. 
-When importing objects created outside of Terraform, you must make sure that each distinct object 
+object in the state becomes ambiguous, and Terraform may behave unexpectedly. Terraform can guarantee
+a one-to-one mapping when it creates objects and records their identities in the state.
+When importing objects created outside of Terraform, you must make sure that each distinct object
 is imported to only one resource instance.
 
 ## Metadata

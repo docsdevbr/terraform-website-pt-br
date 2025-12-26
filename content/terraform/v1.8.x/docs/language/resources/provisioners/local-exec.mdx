@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: 'Provisioner: local-exec'
 description: >-
   The `local-exec` provisioner invokes a local executable after a resource is
@@ -64,7 +71,7 @@ The following arguments are supported:
   For example, `when = destroy` specifies that the provisioner will run when the associated resource
   is destroyed. Refer to [Destroy-Time Provisioners](/terraform/language/resources/provisioners/syntax#destroy-time-provisioners)
   for details.
-  
+
 *  `quiet` - (Optional) If set to `true`, Terraform will not print the command to be executed to stdout, and will instead print "Suppressed by quiet=true". Note that the output of the command will still be printed in any case.
 
 ### Interpreter Examples

@@ -1,29 +1,36 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Query data from external sources
 description: You can fetch data from APIs, external Terraform backends, function outputs, and other Terraform configurations. Learn how to query data sources.
 ---
 
 # Query infrastructure data
 
-You can instruct Terraform to fetch data from a range of data sources, including APIs, external Terraform workspaces, and function outputs. Dynamically fetching data makes your configuration more flexible. 
+You can instruct Terraform to fetch data from a range of data sources, including APIs, external Terraform workspaces, and function outputs. Dynamically fetching data makes your configuration more flexible.
 
 > **Hands-on:** Try the [Query Data Sources](/terraform/tutorials/configuration-language/data-sources) tutorial.
 
 ## Introduction
 
-Many providers make data sources available when you install the provider. Data sources fetch data from the provider, but do not create or modify resources. To access data from a data source, configure the `data` block and specify its arguments. Refer to your provider's documentation for details about the arguments available for the data source. 
+Many providers make data sources available when you install the provider. Data sources fetch data from the provider, but do not create or modify resources. To access data from a data source, configure the `data` block and specify its arguments. Refer to your provider's documentation for details about the arguments available for the data source.
 
-The provider queries the data source according to the configuration. You can reference the your infrastructure's data using the data source's attributes in other parts of your configuration. 
+The provider queries the data source according to the configuration. You can reference the your infrastructure's data using the data source's attributes in other parts of your configuration.
 
 The `data` block supports expressions and other dynamic Terraform language features. You can also use many of the arguments built into Terraform that control how Terraform creates the data object. Refer to the following topics for details:
 
 - [`data` block reference](/terraform/language/block/data)
 - [Expressions](/terraform/language/expressions)
-- [Meta-arguments](/terraform/language/meta-arguments) 
+- [Meta-arguments](/terraform/language/meta-arguments)
 
 ### Structure
 
-Each data block is associated with a single data source. Terraform can only perform read operations on data sources. 
+Each data block is associated with a single data source. Terraform can only perform read operations on data sources.
 
 ### Data source behavior
 
@@ -35,7 +42,7 @@ Terraform may defer reading the data source to the apply phase when at least one
 - The `data` block configuration has [custom conditions](#custom-condition-checks) that directly or indirectly depend on a Terraform-managed resource configured to change in the current plan.
 - Arguments in a `data` block refer to values that must be computed during the apply phase.
 
-When the data source depends on other objects, query results are unknown during the plan operation. As a result, Terraform can't provision resources that reference the fetched values until the apply phase. Refer to [Configure dependencies](#dependencies) for more information about dependencies. 
+When the data source depends on other objects, query results are unknown during the plan operation. As a result, Terraform can't provision resources that reference the fetched values until the apply phase. Refer to [Configure dependencies](#dependencies) for more information about dependencies.
 
 #### References to computed values
 
@@ -47,11 +54,11 @@ When arguments in a `data` block refer to values that don't have to be computed,
 
 ### Specialized data sources
 
-Some data sources are specialized utilities that generate data that only exists during the Terraform operation. Terraform re-calculates the data on consecutive plan operations. The following data sources are examples of specialized, local-only data sources: 
+Some data sources are specialized utilities that generate data that only exists during the Terraform operation. Terraform re-calculates the data on consecutive plan operations. The following data sources are examples of specialized, local-only data sources:
 
-- The [`data "template_file"`](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) data source renders a template from a template file. Install the HashiCorp `template` provider to query this data source.   
-- The 
-[`data "local_file"`](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) data source reads local files. Install the HashiCorp `local` provider to query this data source. 
+- The [`data "template_file"`](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) data source renders a template from a template file. Install the HashiCorp `template` provider to query this data source.
+- The
+[`data "local_file"`](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) data source reads local files. Install the HashiCorp `local` provider to query this data source.
 - The [`data "iam_policy_document"`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) data source renders AWS IAM policies. Install the `aws` provider to query this data source.
 
 ## Requirements
@@ -60,7 +67,7 @@ We recommend using Terraform 0.13 and newer to add `depends_on` arguments to `da
 
 ## Declare a data source
 
-Add a `data` block to your configuration and specify the necessary arguments per the provider documentation. You must include the type of data source and a label to use for the returned data. Refer to the provider documentation for the types of data sources available. The following example declares an `aws_ami` data source named `example`: 
+Add a `data` block to your configuration and specify the necessary arguments per the provider documentation. You must include the type of data source and a label to use for the returned data. Refer to the provider documentation for the types of data sources available. The following example declares an `aws_ami` data source named `example`:
 
 ```hcl
 data "aws_ami" "example" {
@@ -90,13 +97,13 @@ You can use expressions and other dynamic Terraform language features to configu
 
 ## Configure how Terraform creates the data resource
 
-You can use many of the built-in Terrafrom arguments, referred to as [meta-arguments](/terraform/language/meta-arguments), to control how Terraform creates the data source. Refer to the [`data` block reference](/terraform/language/block/data) for information about all `data` block configuration options. 
+You can use many of the built-in Terrafrom arguments, referred to as [meta-arguments](/terraform/language/meta-arguments), to control how Terraform creates the data source. Refer to the [`data` block reference](/terraform/language/block/data) for information about all `data` block configuration options.
 
 ### Dependencies
 
 Terraform correctly detects dependencies in your configuration, even when indirectly reference a Terraform-managed resource values through a `local` value. There may be times when you want to ensure that Terraform creates resources in a specific order. In those cases, you can add a [`depends_on` argument](/terraform/language/block/data#depends_on) to a `data` block to modify the dependency graph. The `depends_on` argument configures Terraform to defer querying the data source until after it finishes operations for the specified dependency.
 
-### Custom condition checks 
+### Custom condition checks
 
 You can add `precondition` and `postcondition` blocks to `data` blocks to specify assumptions and guarantees about how the data source operates. In the following example, the `postcondition` ensures that the AMI data source is tagged with `nomad-server`:
 
@@ -117,11 +124,11 @@ Custom conditions return useful information about errors earlier and in context 
 
 ### Multiple instances
 
-You can add [`count`](/terraform/language/block/data#count) and [`for_each`](/terraform/language/block/data#for_each) meta-arguments to `data` blocks  to create multiple instances of the data source. 
+You can add [`count`](/terraform/language/block/data#count) and [`for_each`](/terraform/language/block/data#for_each) meta-arguments to `data` blocks  to create multiple instances of the data source.
 
 Terraform reads each instance of the data source and indexes the results separately. You can refer to the data returned by each data source independently using the `data.<NAME>[<KEY>]` syntax. The value for `<KEY>` is a number starting at `1` for the `count` meta argument. For the `for_each` argument, the `<KEY>` is the value for each item in the collection.
 
-For example, `data.azurerm_resource_group.rg["a_group"]` refers to an instance of the `data.azurrm_resource_group` data source named `rg` created off of the `a_group` key. Refer to the [`data` block reference](/terraform/language/block/data) for more information.  
+For example, `data.azurerm_resource_group.rg["a_group"]` refers to an instance of the `data.azurrm_resource_group` data source named `rg` created off of the `a_group` key. Refer to the [`data` block reference](/terraform/language/block/data) for more information.
 
 ### Alternate provider configurations
 
@@ -187,4 +194,4 @@ resource "aws_instance" "web" {
 }
 ```
 
-The `filter` blocks, and the arguments within them, and the `most_recent` argument are specific to the `aws_ami` provider. Refer to the [AWS provider documenation](https://registry.terraform.io/providers/hashicorp/aws/latest) in the Terraform registry for details. 
+The `filter` blocks, and the arguments within them, and the `most_recent` argument are specific to the `aws_ami` provider. Refer to the [AWS provider documenation](https://registry.terraform.io/providers/hashicorp/aws/latest) in the Terraform registry for details.

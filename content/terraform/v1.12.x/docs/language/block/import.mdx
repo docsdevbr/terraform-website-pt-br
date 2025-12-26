@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: import block reference
 description: >-
   Learn how to configure the `import` block so that you can start managing existing resources with Terraform.
@@ -26,15 +33,15 @@ The following `module` block includes all built-in arguments:
 ```hcl
 import {
   to = resource.type.address
-  id = "cloud-provider-id"      # `id` is mutually exclusive with `identity` 
+  id = "cloud-provider-id"      # `id` is mutually exclusive with `identity`
   identity = {                  # `identity` is mutually exclusive with `id`
     <ATTRIBUTE> = <VALUE>
-  }	  
-  for_each = {          	    # `for_each` accepts a map or a set of strings 
+  }
+  for_each = {          	    # `for_each` accepts a map or a set of strings
     <KEY> = <VALUE>
   }
-  for_each = [       	        # `for_each` accepts a map or a set of strings 
-    "<VALUE>", 
+  for_each = [       	        # `for_each` accepts a map or a set of strings
+    "<VALUE>",
     "<VALUE>"
   ]
   provider = provider-name.alias
@@ -56,7 +63,7 @@ import {
 }
 
 resource "<TYPE>" "<LABEL>" {
-  # 
+  #
 }
 ```
 
@@ -94,11 +101,11 @@ import {
 }
 ```
 
-You must specify a string or an expression that evaluates to a string. The ID must be known during the plan operation. 
+You must specify a string or an expression that evaluates to a string. The ID must be known during the plan operation.
 
 The value of the `id` argument depends on the type of resource you are importing. You can only import resources that are supported by the provider. For information on how to import a resource, refer to the provider documentation.
 
-You cannot use the `id` argument and [`identity` argument](#identity) in the same `import` block. 
+You cannot use the `id` argument and [`identity` argument](#identity) in the same `import` block.
 
 #### Summary
 
@@ -109,7 +116,7 @@ You cannot use the `id` argument and [`identity` argument](#identity) in the sam
 
 ### `identity`
 
-The  `identity` argument specifies a set of attributes that uniquely identifies a resource. 
+The  `identity` argument specifies a set of attributes that uniquely identifies a resource.
 
 ```hcl
 import {
@@ -119,7 +126,7 @@ import {
 }
 ```
 
-The keys of the `identity` argument are specific to the resource type and provider. You can only import resources that are supported by the provider. Refer to your provider documentation for details.  
+The keys of the `identity` argument are specific to the resource type and provider. You can only import resources that are supported by the provider. Refer to your provider documentation for details.
 
 You cannot use the `identity` argument and [`id` argument](#id) in the same `import` block.
 
@@ -139,7 +146,7 @@ The `for_each` meta-argument instructs Terraform to import similar resources wit
 
 ```hcl
 import {
-  for_each = [ "<VALUE>" ] 
+  for_each = [ "<VALUE>" ]
   # . . .
 }
 ```
@@ -181,7 +188,7 @@ The following examples show how to write configuration for common use cases.
 
 ### Import a single resource
 
-You can import an individual resource by specifying its ID with the `id` argument or by specifying the set of identifying attributes in the `identity` argument.  
+You can import an individual resource by specifying its ID with the `id` argument or by specifying the set of identifying attributes in the `identity` argument.
 
 <Tabs>
 
@@ -226,7 +233,7 @@ import {
 
 ### Import multiple resources
 
-In the following example, the `for_each` argument loops through the key-value pairs defined in the `buckets` map. For each pair, Terraform imports the S3 bucket into the `aws_s3_bucket.this` resource. The `[each.key]` index maps to the keys in `locals` block, such as `aws_s3_bucket.this["staging"]`. 
+In the following example, the `for_each` argument loops through the key-value pairs defined in the `buckets` map. For each pair, Terraform imports the S3 bucket into the `aws_s3_bucket.this` resource. The `[each.key]` index maps to the keys in `locals` block, such as `aws_s3_bucket.this["staging"]`.
 
 ```hcl
 locals {
@@ -253,7 +260,7 @@ In the following example, the `for_each` argument loops through the list of key-
 ```hcl
 locals {
   buckets = [
-    { 
+    {
       group = "one"
       key   = "bucket1"
       id    = "one_1"

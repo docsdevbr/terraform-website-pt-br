@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Terraform Stack CLI reference
 description: The terraform-stacks-cli is a command-line tool for validating, initializing, and managing Stack configurations. Learn about the terraform-stacks-cli commands and options.
 ---
@@ -72,8 +79,8 @@ $ sudo yum -y install terraform-stacks-cli
 
 The `terraform-stacks-cli` supports the following four commands:
 
-* [`tfstacks init`](#tfstacks-init-command)  
-* [`tfstacks validate`](#tfstacks-validate-command)  
+* [`tfstacks init`](#tfstacks-init-command)
+* [`tfstacks validate`](#tfstacks-validate-command)
 * [`tfstacks providers lock [-platform=os_arch]`](#tfstacks-providers-lock-command)
 * [`tfstacks plan -organization=org_name -stack=stack_id -deployment=deployment_name [-hostname=hostname]`](#tfstacks-plan-command)
 * [`tfstacks fmt`](#tfstacks-fmt-command)
@@ -82,13 +89,13 @@ Each Stack command supports [global options](#global-options).
 
 ### `tfstacks init` command
 
-The `tfstacks init` command attempts to download any dependencies your Stack configuration requires. 
+The `tfstacks init` command attempts to download any dependencies your Stack configuration requires.
 
 ```shell-session
 $ tfstacks init
 ```
 
-If the `tfstacks init` command cannot find a dependency, it warns you of the reason why and installs a false dependency in the real one's place to unblock any future validation. Meaning, that it the  `tfstacks init` command cannot download a dependency, you can still run `tfstacks validate`, but the missing dependencies are not validated.  
+If the `tfstacks init` command cannot find a dependency, it warns you of the reason why and installs a false dependency in the real one's place to unblock any future validation. Meaning, that it the  `tfstacks init` command cannot download a dependency, you can still run `tfstacks validate`, but the missing dependencies are not validated.
 
 ### `tfstacks validate` command
 
@@ -102,13 +109,13 @@ We recommend running this command whenever you change your Stack configuration.
 
 ### `tfstacks providers lock` command
 
-The `tfstacks providers lock` command creates and updates your stack’s provider lock file. 
+The `tfstacks providers lock` command creates and updates your stack’s provider lock file.
 
 ```shell-session
 $ tfstacks providers lock [-platform=os_arch]
 ```
 
-The `tfstacks providers lock` command references the `required_providers` block from your configuration to know which providers to download and compute the provider lock hashes for. The `tfstacks providers lock` command only checks the `required_providers` block, so you must list all of the providers you use in the `required_providers` block to ensure that the `tfstacks providers lock` command can find them. 
+The `tfstacks providers lock` command references the `required_providers` block from your configuration to know which providers to download and compute the provider lock hashes for. The `tfstacks providers lock` command only checks the `required_providers` block, so you must list all of the providers you use in the `required_providers` block to ensure that the `tfstacks providers lock` command can find them.
 
 By default, the `tfstacks providers lock` installs hashes for providers built for  `linux_amd64` machines, which HCP Terraform requires for execution. You can optionally use the `-platform=os_arch` argument to create hashes for other platforms.
 
@@ -140,7 +147,7 @@ $ tfstacks fmt [options] [target]
 ```
 
 By default, the `tfstacks fmt` command scans your current directory for configuration files. You can also provide a `target` argument to tell `tfstacks fmt` to scan:
-* A directory 
+* A directory
 * A specific file
 * Standard input by supplying a single dash (`-`).
 
@@ -160,6 +167,6 @@ The `tfstacks fmt` command uses the same formatting rules as the Terraform CLI's
 
 You can apply the following global options to any `tfstacks` command:
 
-* The `-terraform-binary` flag specifies a specific version of Terraform to use instead of the one in your PATH.  
-* The `-chdir` flag points to an alternate configuration directory.  
+* The `-terraform-binary` flag specifies a specific version of Terraform to use instead of the one in your PATH.
+* The `-chdir` flag points to an alternate configuration directory.
 * The `-no-color` flag disables color output in the CLI.

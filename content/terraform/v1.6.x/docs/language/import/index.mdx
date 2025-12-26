@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Import - Configuration Language
 description: >-
   Import and manage existing resources with Terraform using configuration-driven import.
@@ -39,7 +46,7 @@ The `import` block has the following arguments:
  - `id` - A string with the [import ID](#import-id) of the resource.
  - `provider` (optional) - An optional custom resource provider, see [The Resource provider Meta-Argument](/terraform/language/meta-arguments/resource-provider) for details.
 
-If you do not set the `provider` argument, Terraform attempts to import from the default provider. 
+If you do not set the `provider` argument, Terraform attempts to import from the default provider.
 
 ### Import ID
 
@@ -67,7 +74,7 @@ Terraform only needs to import a given resource once. Attempting to import a res
 
 ## Resource configuration
 
-Before importing, you must add configuration for every resource you want Terraform to import. Otherwise, Terraform throws an error during planning, insisting you add resource configuration before it can successfully import. You can create resource configuration manually or [generate it using Terraform](/terraform/language/import/generating-configuration). 
+Before importing, you must add configuration for every resource you want Terraform to import. Otherwise, Terraform throws an error during planning, insisting you add resource configuration before it can successfully import. You can create resource configuration manually or [generate it using Terraform](/terraform/language/import/generating-configuration).
 
 We recommend writing a `resource` block if you know what most of the [resource's arguments](/terraform/language/resources/syntax#resource-arguments) will be. For example, your configuration may already contain a similar resource whose configuration you can copy and modify.
 
@@ -75,7 +82,7 @@ We recommend [generating configuration](/terraform/language/import/generating-co
 
 ### Add a `resource` block
 
-Add a `resource` block for the resource to import. The resource address must match the import block's `to` argument. 
+Add a `resource` block for the resource to import. The resource address must match the import block's `to` argument.
 
 ```hcl
 import {
@@ -90,7 +97,7 @@ resource "aws_instance" "example" {
 
 ### Generate configuration
 
-Terraform can generate HCL for resources that do not already exist in configuration. 
+Terraform can generate HCL for resources that do not already exist in configuration.
 For more details, see [Generating Configuration](/terraform/language/import/generating-configuration).
 
 ## Examples

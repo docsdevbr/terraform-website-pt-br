@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: providers meta-argument reference
 description: Learn how the `providers` meta-argument works in Terraform configuration.
 ---
@@ -62,7 +69,7 @@ Add the `providers` argument when one of the following conditions apply:
 Most re-usable modules only use default provider configurations, which they can
 automatically inherit from their caller when `providers` is omitted.
 
-However, in Terraform configurations that use multiple configurations of the same provider, you might want some child modules to use the default provider configuration and others to use an alternate. 
+However, in Terraform configurations that use multiple configurations of the same provider, you might want some child modules to use the default provider configuration and others to use an alternate.
 A common use case is using one configuration to manage resources in multiple different regions of the same cloud provider.
 
 Using `providers` argument lets you accommodate this without needing to edit the child module. Although the code
@@ -90,7 +97,7 @@ The following use cases describe common patterns for the `providers` argument.
 In rare cases, a single re-usable module might require multiple configurations
 of the same provider. For example, a module that configures connectivity between
 networks in two AWS regions is likely to need both a `source` and a `destination`
-region. 
+region.
 
 In the following example, the `tunnel` module includes resources that support their own provider configuration. As a result, each resource alias maps to a different provider configurations declared in the root module:
 

@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Version Constraints - Configuration Language
 description: >-
   Version constraint strings specify a range of acceptable versions for modules,
@@ -7,7 +14,7 @@ description: >-
 
 # Version constraints
 
-This topic provides reference information about the version constraints syntax in Terraform configuration language. 
+This topic provides reference information about the version constraints syntax in Terraform configuration language.
 
 ## Introduction
 
@@ -21,7 +28,7 @@ components you define in the configuration. Terraform expects a specially-format
 ## Version constraint syntax
 
 A version constraint is a [string literal](/terraform/language/expressions/strings)
-containing one or more conditions separated by commas. 
+containing one or more conditions separated by commas.
 
 Each condition consists of an operator and a version number.
 
@@ -77,13 +84,13 @@ a dash, for example `1.2.0-beta`. To configure Terraform to select a pre-release
 
 ## Best practices
 
-We recommend implementing the following best practices when configuration version constraints. 
+We recommend implementing the following best practices when configuration version constraints.
 
 ### Module versions
 
 - Require specific versions to ensure that updates only happen when convenient to you when your infrastructure depends on third-party modules.
 
-- Specify version ranges when your organization consistently uses semantic versioning for modules  it maintains. 
+- Specify version ranges when your organization consistently uses semantic versioning for modules  it maintains.
 
 - Specify version ranges when your organization follows a well-defined release process that avoids unwanted updates.
 

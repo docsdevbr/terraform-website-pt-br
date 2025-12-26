@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: Import - Generating Configuration
 description: >-
   Generate configuration and manage existing resources with Terraform using configuration-driven import.
@@ -22,7 +29,7 @@ If any resources targeted by an `import` block do not exist in your configuratio
 
 ## Workflow
 
-The workflow for generating configuration is similar to the [`import` block workflow](/terraform/language/import#plan-and-apply-an-import), with the extra step of generating configuration during the planning stage. You can then review and modify the generated configuration before applying. 
+The workflow for generating configuration is similar to the [`import` block workflow](/terraform/language/import#plan-and-apply-an-import), with the extra step of generating configuration during the planning stage. You can then review and modify the generated configuration before applying.
 
 ### 1. Add the `import` block
 
@@ -44,7 +51,7 @@ If you add a new `provider` block to your configuration, you must run `terraform
 
 ### 2. Plan and generate configuration
 
-To instruct Terraform to generate configuration for the `import` blocks you defined, run `terraform plan` with the `-generate-config-out=` flag and a new file path. Terraform displays its plan for importing your resource and the file where Terraform generated configuration based on this plan. 
+To instruct Terraform to generate configuration for the `import` blocks you defined, run `terraform plan` with the `-generate-config-out=` flag and a new file path. Terraform displays its plan for importing your resource and the file where Terraform generated configuration based on this plan.
 
 ```shell
 $ terraform plan -generate-config-out=generated.tf
@@ -69,7 +76,7 @@ Plan: 1 to import, 0 to add, 0 to change, 0 to destroy.
 
 ╷
 │ Warning: Config generation is experimental
-│ 
+│
 │ Generating configuration during import is currently experimental, and the generated configuration format may change in future versions.
 ╵
 
@@ -88,7 +95,7 @@ resource "aws_iot_thing" "bar" {
 }
 ```
 
-Review the generated configuration and update it as needed. You may wish to move the generated configuration to another file, add or remove resource arguments, or update it to reference input variables or other resources in your configuration. 
+Review the generated configuration and update it as needed. You may wish to move the generated configuration to another file, add or remove resource arguments, or update it to reference input variables or other resources in your configuration.
 
 ### 4. Apply
 
@@ -134,11 +141,11 @@ Terraform will display an error like the one below if it does not receive values
 $ terraform plan -generate-config-out=generated.tf
 ╷
 │ Error: Conflicting configuration arguments
-│ 
+│
 │   with aws_instance.ubuntu,
 │   on g.tf line 20, in resource "aws_instance" "ubuntu":
 │   20:   ipv6_address_count                   = 0
-│ 
+│
 │ "ipv6_address_count": conflicts with ipv6_addresses
 ╵
 ```

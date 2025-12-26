@@ -20,18 +20,18 @@ We are committed to providing a welcoming community.
 Please read our [Code of Conduct][code-of-conduct] to understand our community
 standards.
 
-## Support
+## Sponsor
 
-You can support the project through [GitHub Sponsors][github-sponsors] or
-[Pix][sponsor].
+Please visit our [sponsor page][sponsor] to know how you can support the
+project.
 
 ## License
 
-Copyright (c) 2024 HashiCorp, Inc.<br>
+Copyright (c) 2024 HashiCorp, Inc.<br/>
 Terraform and the Terraform logo are trademarks of HashiCorp.
 
 Documentation licensed under the
-[Business Source License, Version 1.1][license].<br>
+[Business Source License, Version 1.1][license].<br/>
 The original work was translated from English into Brazilian Portuguese.
 
 [badge-contributors]: https://img.shields.io/github/contributors/docsdevbr/terraform-website-pt-br
@@ -54,10 +54,10 @@ The original work was translated from English into Brazilian Portuguese.
 
 [license]: LICENSE
 
-[page]: https://pt.docs.dev.br/p/terraform/
+[page]: https://pt.docs.dev.br/tech/t/terraform/
 
 [readme-en]: README.EN.md
 
 [readme-pt-br]: README.md
 
-[sponsor]: https://pt.docs.dev.br/sponsor
+[sponsor]: https://en.docs.dev.br/sponsor

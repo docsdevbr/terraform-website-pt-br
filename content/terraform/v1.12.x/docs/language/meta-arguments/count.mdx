@@ -1,17 +1,24 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: count meta-argument reference
 description: Learn how the `count` meta-argument works in Terraform configuration.
 ---
 
 # `count` reference
 
-By default, each [`resource` block](/terraform/language/block/resource) and [`ephemeral` block](/terraform/language/block/ephemeral) configures one real infrastructure object. Similarly, a [`module` block](/terraform/language/block/module) includes a child module's contents into the configuration one time. 
+By default, each [`resource` block](/terraform/language/block/resource) and [`ephemeral` block](/terraform/language/block/ephemeral) configures one real infrastructure object. Similarly, a [`module` block](/terraform/language/block/module) includes a child module's contents into the configuration one time.
 
 Use the `count` meta-argument to manage several similar objects, such as a fixed pool of compute instances, without writing a separate block for each object. When a `resource` or `module` block includes a `count` argument whose value is a whole number, Terraform creates that many instances.
 
 ## Usage
 
-The `count` meta-argument accepts a whole number and creates that many instances of the resource or module. Each instance has a distinct infrastructure object associated with it, and each is separately created, updated, or destroyed when the configuration is applied. 
+The `count` meta-argument accepts a whole number and creates that many instances of the resource or module. Each instance has a distinct infrastructure object associated with it, and each is separately created, updated, or destroyed when the configuration is applied.
 
 <Tip>
 

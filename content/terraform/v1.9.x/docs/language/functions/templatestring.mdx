@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: templatestring - Functions - Configuration Language
 description: |-
   The templatestring function takes a string from elsewhere in the module and renders its content as a template using a supplied set of template variables.
@@ -6,7 +13,7 @@ description: |-
 
 # `templatestring` function reference
 
-This topic provides reference information about the `templatestring` function. The `templatestring` function renders a string defined elsewhere in the module as a template using a set of variables. 
+This topic provides reference information about the `templatestring` function. The `templatestring` function renders a string defined elsewhere in the module as a template using a set of variables.
 
 ## Introduction
 
@@ -51,7 +58,7 @@ For more examples of how to use templates, refer to the documentation for [the `
 
 ## Dynamic template construction
 
-You can write an expression that builds a template dynamically and then assigns it to a [local value](/terraform/language/values/locals). You can then use a reference to that local value as the first argument to `templatestring`.  
+You can write an expression that builds a template dynamically and then assigns it to a [local value](/terraform/language/values/locals). You can then use a reference to that local value as the first argument to `templatestring`.
 
 Note that you should only dynamically construct templates in this way when no other alternative is feasible. This is because the result can be difficult to understand and maintain and susceptible to unexpected inputs. Built-in Terraform functions may interact with the local filesystem. As a result, the inputs may produce a template that includes data from arbitrary files on the system where Terraform is running.
 

@@ -1,4 +1,11 @@
 ---
+# Copyright (c) 2024 HashiCorp, Inc.
+# Terraform and the Terraform logo are trademarks of HashiCorp.
+#
+# Documentation licensed under the Business Source License, Version 1.1.
+# The original work was translated from English into Brazilian Portuguese.
+# https://github.com/hashicorp/terraform/blob/-/LICENSE
+
 page_title: provider block reference for Terraform component configurations
 description: Use the `provider` block in component configurations to configure providers for your Stack components.
 ---
@@ -112,11 +119,6 @@ provider "<NAME>" "<ALIAS>" {
 When you use `for_each`, you can reference individual provider instances using `provider.<PROVIDER_NAME>.<ALIAS>[<KEY>]` syntax in your `component` blocks.
 
 `for_each` is a **meta-argument**. Meta-arguments are built into the Terraform language and control how Terraform creates and manages resources. Refer to the [`for_each` reference](/terraform/language/meta-arguments/for_each) for details about how the argument works.
-
-#### Summary
-
-- Data type: Map or Set
-- Default: None
 
 ## Examples
 
