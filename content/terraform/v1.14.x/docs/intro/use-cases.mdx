@@ -6,94 +6,217 @@
 # The original work was translated from English into Brazilian Portuguese.
 # https://github.com/hashicorp/terraform/blob/-/LICENSE
 
-layout: "intro"
-page_title: "Use Cases"
-sidebar_current: "use-cases"
-description: |-
-  Learn about Terraform use cases, such as enabling multi-cloud deployments, application management, policy compliance, and self-service infrastructure.
+layout: intro
+page_title: Casos de uso
+sidebar_current: use-cases
+description: >-
+  Saiba mais sobre os casos de uso do Terraform, como habilitar implantações em
+  várias nuvens, gerenciamento de aplicações, conformidade com políticas e
+  infraestrutura de autoatendimento.
 ---
 
-# Terraform Use Cases
+# Casos de uso do Terraform
 
-[HashiCorp Terraform](/terraform/intro) is an infrastructure as code tool that lets you define infrastructure resources in human-readable configuration files that you can version, reuse, and share. You can then use a consistent workflow to safely and efficiently provision and manage your infrastructure throughout its lifecycle.
+O [HashiCorp Terraform](/terraform/intro) é uma ferramenta de infraestrutura
+como código que permite definir recursos de infraestrutura em arquivos de
+configuração legíveis por pessoas, que podem ser versionados, reutilizados e
+compartilhados.
+Você pode então usar um fluxo de trabalho consistente para provisionar e
+gerenciar sua infraestrutura com segurança e eficiência ao longo de todo o seu
+ciclo de vida.
 
-This page describes popular Terraform use cases and provides related resources that you can use to create Terraform configurations and workflows.
+Esta página descreve casos de uso populares do Terraform e fornece recursos
+relacionados que você pode usar para criar configurações e fluxos de trabalho do
+Terraform.
 
-## Multi-Cloud Deployment
-Provisioning infrastructure across multiple clouds increases fault-tolerance, allowing for more graceful recovery from cloud provider outages. However, multi-cloud deployments add complexity because each provider has its own interfaces, tools, and workflows. Terraform lets you use the same workflow to manage multiple providers and handle cross-cloud dependencies. This simplifies management and orchestration for large-scale, multi-cloud infrastructures.
+## Implantação em multi-nuvem
 
-### Resources
+O provisionamento de infraestrutura em várias nuvens aumenta a tolerância a
+falhas, permitindo uma recuperação mais eficiente em caso de interrupções do
+provedor de nuvem.
+No entanto, as implantações em multi-nuvem adicionam complexidade, pois cada
+provedor tem suas próprias interfaces, ferramentas e fluxos de trabalho.
+O Terraform permite que você use o mesmo fluxo de trabalho para gerenciar vários
+provedores e lidar com dependências entre nuvens.
+Isso simplifica o gerenciamento e a orquestração de infraestruturas de grande
+escala em multi-nuvem.
 
-- Try our [Deploy Federated Multi-Cloud Kubernetes Clusters](/terraform/tutorials/networking/multicloud-kubernetes) tutorial to provision Kubernetes clusters in both Azure and AWS environments, configure Consul federation with mesh gateways across the two clusters, and deploy microservices across the two clusters to verify federation.
-- Browse the [Terraform Registry](https://registry.terraform.io/browse/providers) to find thousands of publicly available providers.
+### Recursos
 
+- Faça nosso tutorial
+  [Implante clusters Kubernetes federados em multi-nuvem](/terraform/tutorials/networking/multicloud-kubernetes)
+  para provisionar clusters Kubernetes em ambientes Azure e AWS, configurar a
+  federação do Consul com gateways de malha entre os dois clusters e implantar
+  microsserviços entre os dois clusters para verificar a federação.
+- Navegue pelo
+  [Registro do Terraform](https://registry.terraform.io/browse/providers) para
+  encontrar milhares de provedores disponíveis publicamente.
 
-## Application Infrastructure Deployment, Scaling, and Monitoring Tools
+## Ferramentas para implantação, escalabilidade e monitoramento de infraestrutura de aplicações
 
-You can use Terraform to efficiently deploy, release, scale, and monitor infrastructure for multi-tier applications. N-tier application architecture lets you scale application components independently and provides a separation of concerns. An application could consist of a pool of web servers that use a database tier, with additional tiers for API servers, caching servers, and routing meshes. Terraform allows you to manage the resources in each tier together, and automatically handles dependencies between tiers. For example, Terraform will deploy a database tier before provisioning the web servers that depend on it.
+Você pode usar o Terraform para implantar, lançar, escalar e monitorar a
+infraestrutura de aplicações de várias camadas com eficiência.
+A arquitetura de aplicações em N camadas permite escalar os componentes da
+aplicação de forma independente e proporciona uma separação de
+responsabilidades.
+Uma aplicação pode consistir em um conjunto de servidores web que usam uma
+camada de banco de dados, com camadas adicionais para servidores de API,
+servidores de cache e malhas de roteamento.
+O Terraform permite gerenciar os recursos em cada camada de forma conjunta e
+lida automaticamente com as dependências entre elas.
+Por exemplo, o Terraform implantará uma camada de banco de dados antes de
+provisionar os servidores web que dependem dela.
 
-### Resources
+### Recursos
 
-- Try our [Automate Monitoring with the Terraform Datadog Provider](/terraform/tutorials/applications/datadog-provider) tutorial to deploy a demo Nginx application to a Kubernetes cluster with Helm and install the Datadog agent across the cluster. The Datadog agent reports the cluster health back to your Datadog dashboard.
-- Try our [Use Application Load Balancers for Blue-Green and Canary Deployments](/terraform/tutorials/aws/blue-green-canary-tests-deployments) tutorial. You will provision the blue and green environments, add feature toggles to your Terraform configuration to define a list of potential deployment strategies, conduct a canary test, and incrementally promote your green environment.
+- Faça nosso tutorial
+  [Automatize o monitoramento com o provedor Datadog do Terraform](/terraform/tutorials/applications/datadog-provider)
+  para implantar uma aplicação Nginx de demonstração em um cluster Kubernetes
+  com o Helm e instalar o agente Datadog em todo o cluster.
+  O agente Datadog reporta a integridade do cluster para o seu dashboard do
+  Datadog.
+- Faça nosso tutorial
+  [Use balanceadores de carga de aplicações para implantações azul-verde e canário](/terraform/tutorials/aws/blue-green-canary-tests-deployments).
+  Você irá provisionar os ambientes azul e verde, adicionar opções de
+  ativação/desativação de recursos à sua configuração do Terraform para definir
+  uma lista de possíveis estratégias de implantação, realizar um teste canário e
+  promover incrementalmente seu ambiente verde.
 
+## Clusters de autoatendimento
 
-## Self-Service Clusters
+Em uma grande organização, seu time de operações centralizado pode receber
+muitas solicitações de infraestrutura repetitivas.
+Você pode usar o Terraform para criar um modelo de infraestrutura de
+"autoatendimento" que permite que os times de produto gerenciem sua própria
+infraestrutura de forma independente.
+Você pode criar e usar módulos do Terraform que codificam os padrões para
+implantação e gerenciamento de serviços em sua organização, permitindo que os
+times implantem serviços de forma eficiente, conforme as práticas da sua
+organização.
+O HCP Terraform também pode ser integrado a sistemas de tickets como o
+ServiceNow para gerar automaticamente novas solicitações de infraestrutura.
 
-At a large organization, your centralized operations team may get many repetitive infrastructure requests. You can use Terraform to build a "self-serve" infrastructure model that lets product teams manage their own infrastructure independently. You can create and use Terraform modules that codify the standards for deploying and managing services in your organization, allowing teams to efficiently deploy services in compliance with your organization’s practices. HCP Terraform can also integrate with ticketing systems like ServiceNow to automatically generate new infrastructure requests.
+### Recursos
 
-### Resources
+- Faça o tutorial
+  [Use módulos do registro](/terraform/tutorials/modules/module-use) para
+  começar a usar módulos públicos em sua configuração do Terraform.
+- Faça o tutorial
+  [Crie e use um módulo local](/terraform/tutorials/modules/module-create) para
+  criar um módulo para gerenciar buckets do AWS S3.
+- Siga estas [Instruções de configuração da integração do Service Catalog do ServiceNow](/terraform/cloud-docs/integrations/service-now)
+  para conectar o ServiceNow ao HCP Terraform.
 
-- Try the [Use Modules from the Registry](/terraform/tutorials/modules/module-use) tutorial to get started using public modules in your Terraform configuration.
-Try the [Build and Use a Local Module](/terraform/tutorials/modules/module-create) tutorial to create a module to manage AWS S3 buckets.
-- Follow these [ServiceNow Service Catalog Integration Setup Instructions](/terraform/cloud-docs/integrations/service-now) to connect ServiceNow to HCP Terraform.
+## Conformidade e gerenciamento de políticas
 
+O Terraform pode ajudar você a aplicar políticas sobre os tipos de recursos que
+os times podem provisionar e usar.
+Os processos de revisão baseados em tickets são um gargalo que pode atrasar o
+desenvolvimento.
+Em vez disso, você pode usar o Sentinel, um framework de política como código,
+para aplicar automaticamente políticas de conformidade e governança antes que o
+Terraform faça alterações na infraestrutura.
+As políticas do Sentinel estão disponíveis no Terraform Enterprise e no
+[HCP Terraform](https://www.hashicorp.com/products/terraform/pricing).
 
-## Policy Compliance and Management
+### Recursos
 
-Terraform can help you enforce policies on the types of resources teams can provision and use. Ticket-based review processes are a bottleneck that can slow down development. Instead, you can use Sentinel, a policy-as-code framework, to automatically enforce compliance and governance policies before Terraform makes infrastructure changes. Sentinel policies are available in Terraform Enterprise and [HCP Terraform](https://www.hashicorp.com/products/terraform/pricing).
+- A
+  [documentação de estimativa de custos](/terraform/cloud-docs/cost-estimation)
+  descreve como usar o recurso de estimativa de custos e como definir políticas
+  que limitem os custos associados a alterações na infraestrutura.
+- A [documentação do Sentinel](/terraform/cloud-docs/policy-enforcement) fornece
+  informações mais detalhadas e uma lista de políticas de exemplo que você pode
+  adaptar aos seus casos de uso.
 
-### Resources
+## Configuração de aplicações PaaS
 
-- The [cost estimation documentation](/terraform/cloud-docs/cost-estimation) describes how to use the cost estimation feature and how to define policies that limit costs associated with infrastructure changes.
+Plataformas como Serviço (PaaS) como o Heroku permitem que você crie aplicaçÕes
+web e adicione complementos, como bancos de dados ou provedores de e-mail.
+O Heroku pode escalar elasticamente o número de dynos ou workers, mas a maioria
+das aplicações mais complexas exige muitos complementos e serviços externos.
+Você pode usar o Terraform para codificar a configuração necessária para uma
+aplicação Heroku, configurar um DNSimple para definir um CNAME e configurar o
+Cloudflare como uma Rede de Distribuição de Conteúdo (CDN) para a aplicação.
+O Terraform pode fazer tudo isso de forma rápida e consistente, sem a
+necessidade de uma interface web.
 
-- The [Sentinel documentation](/terraform/cloud-docs/policy-enforcement) provides more in-depth information and a list of example policies that you can adapt for your use cases.
+### Recursos
 
+Faça o tutorial
+[Implante, gerencie e escale uma aplicação no Heroku](/terraform/tutorials/applications/heroku-provider)
+para gerenciar o ciclo de vida de uma aplicação com o Terraform.
 
-## PaaS Application Setup
-Platform as a Service (PaaS) vendors like Heroku allow you to create  web applications and attach add-ons, such as databases or email providers. Heroku can elastically scale the number of dynos or workers, but most non-trivial applications need many add-ons and external services. You can use Terraform to codify the setup required for a Heroku application, configure a DNSimple to set a CNAME, and set up Cloudflare as a Content Delivery Network (CDN) for the app. Terraform can quickly and consistently do all of this without a web interface.
+## Redes definidas por software
 
-### Resources
+O Terraform pode interagir com Redes Definidas por Software (SDNs) para
+configurar automaticamente a rede conforme as necessidades das aplicações em
+execução.
+Isso permite migrar de um fluxo de trabalho baseado em tickets para um
+automatizado, reduzindo os tempos de implantação.
 
-Try the [Deploy, Manage, and Scale an Application on Heroku](/terraform/tutorials/applications/heroku-provider) tutorial to manage an application’s lifecycle with Terraform.
+Por exemplo, quando um serviço se registra no
+[HashiCorp Consul](https://www.consul.io/), o
+[Consul-Terraform-Sync](/consul/docs/nia) pode gerar automaticamente a
+configuração do Terraform para expor as portas apropriadas e ajustar as
+configurações de rede para qualquer SDN que tenha um provedor Terraform
+associado.
+A Automação de Infraestrutura de Rede (NIA) permite aprovar com segurança as
+alterações necessárias para suas aplicações, sem precisar traduzir manualmente
+os tickets das pessoas desenvolvedoras nas alterações que você considera
+necessárias para as aplicações.
 
+### Recursos
 
-## Software Defined Networking
-
-Terraform can interact with Software Defined Networks (SDNs) to automatically configure the network according to the needs of the applications running in it. This lets you move from a ticket-based workflow to an automated one, reducing deployment times.
-
-For example, when a service registers with [HashiCorp Consul](https://www.consul.io/), [Consul-Terraform-Sync](/consul/docs/nia) can automatically generate Terraform configuration to expose appropriate ports and adjust network settings for any SDN that has an associated Terraform provider. Network Infrastructure Automation (NIA) allows you to safely approve the changes that your applications require without having to manually translate tickets from developers into the changes you think their applications need.
-
-### Resources
-
-- Try the [Network Infrastructure Automation with Consul-Terraform-Sync Intro](/consul/tutorials/network-infrastructure-automation/consul-terraform-sync-intro) tutorial to install Consul-Terraform-Sync on a node. You will then configure it to communicate with a Consul datacenter, react to service changes, and execute an example task.
-- Try the [Consul-Terraform-Sync and Terraform Enterprise/Cloud Integration](/consul/tutorials/network-infrastructure-automation/consul-terraform-sync-terraform-enterprise) tutorial to configure Consul-Terraform-Sync to interact with Terraform Enterprise and HCP Terraform.
-
+- Faça o tutorial
+  [Introdução à automação de infraestrutura de rede com Consul-Terraform-Sync](/consul/tutorials/network-infrastructure-automation/consul-terraform-sync-intro)
+  para instalar o Consul-Terraform-Sync em um nó.
+  Em seguida, você o configurará para se comunicar com um datacenter do Consul,
+  reagir a alterações de serviço e executar uma tarefa de exemplo.
+- Faça o tutorial
+  [Consul-Terraform-Sync e integração Terraform Enterprise/Cloud](/consul/tutorials/network-infrastructure-automation/consul-terraform-sync-terraform-enterprise)
+  para configurar o Consul-Terraform-Sync para interagir com o Terraform
+  Enterprise e o HCP Terraform.
 
 ## Kubernetes
 
-Kubernetes is an open-source workload scheduler for containerized applications. Terraform lets you both deploy a Kubernetes cluster and manage its resources (e.g., pods, deployments, services, etc.). You can also use the [HCP Terraform Operator](https://github.com/hashicorp/hcp-terraform-operator) to manage cloud and on-prem infrastructure through a Kubernetes Custom Resource Definition (CRD) and HCP Terraform.
+O Kubernetes é um agendador de cargas de trabalho de código aberto para
+aplicações conteinerizadas.
+O Terraform permite implantar um cluster Kubernetes e gerenciar seus recursos
+(por exemplo, pods, deployments, serviços, etc.).
+Você também pode usar o
+[Operador HCP Terraform](https://github.com/hashicorp/hcp-terraform-operator)
+para gerenciar infraestrutura em nuvem e local por meio de uma Definição de
+Recurso Personalizado (CRD) do Kubernetes e do HCP Terraform.
 
-### Resources
+### Recursos
 
-- Try the [Manage Kubernetes Resources via Terraform](/terraform/tutorials/kubernetes/kubernetes-provider) tutorial. You will use Terraform to schedule and expose a NGINX deployment on a Kubernetes cluster.
-- Try the [Deploy Infrastructure with the HCP Terraform Operator for Kubernetes](/terraform/tutorials/kubernetes/kubernetes-operator) tutorial. You will configure and deploy the Operator to a Kubernetes cluster and use it to create an HCP Terraform workspace and provision a message queue for an example application.
+- Faça o tutorial
+  [Gerencie recursos do Kubernetes via Terraform](/terraform/tutorials/kubernetes/kubernetes-provider).
+  Você usará o Terraform para agendar e expor uma implantação do NGINX em um
+  cluster Kubernetes.
+- Faça o tutorial
+  [Implante infraestrutura com o Operador HCP Terraform para Kubernetes](/terraform/tutorials/kubernetes/kubernetes-operator).
+  Você configurará e implantará o Operador em um cluster Kubernetes e o usará
+  para criar um espaço de trabalho do HCP Terraform e provisionar uma fila de
+  mensagens para uma aplicação de exemplo.
 
+## Ambientes paralelos
 
-## Parallel Environments
+Você pode ter ambientes de staging ou de controle de qualidade que usa para
+testar novas aplicações antes de lançá-las em produção.
+À medida que o ambiente de produção cresce e se torna mais complexo, pode ser
+cada vez mais difícil manter um ambiente atualizado para cada etapa do processo
+de desenvolvimento.
+O Terraform permite que você crie e desative rapidamente infraestrutura para
+desenvolvimento, teste, QA e produção.
+Usar o Terraform para criar ambientes descartáveis conforme a necessidade é mais
+econômico do que manter cada um indefinidamente.
 
-You may have staging or QA environments that you use to test new applications before releasing them in production. As the production environment grows larger and more complex, it can be increasingly difficult to maintain an up-to-date environment for each stage of the development process. Terraform lets you rapidly spin up and decommission infrastructure for development, test, QA, and production. Using Terraform to create disposable environments as needed is more cost-efficient than maintaining each one indefinitely.
+## Demonstrações de software
 
-
-## Software Demos
-You can use Terraform to create, provision, and bootstrap a demo on various cloud providers. This lets end users easily try the software on their own infrastructure and even enables them to adjust parameters like cluster size to more rigorously test tools at any scale.
+Você pode usar o Terraform para criar, provisionar e inicializar uma
+demonstração em vários provedores de nuvem.
+Isso permite que as pessoas usuárias finais experimentem facilmente o software
+em sua própria infraestrutura e até mesmo ajustem parâmetros como o tamanho do
+cluster para testar as ferramentas de forma mais rigorosa em qualquer escala.
