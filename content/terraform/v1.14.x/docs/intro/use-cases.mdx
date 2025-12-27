@@ -75,7 +75,7 @@ provisionar os servidores web que dependem dela.
 
 - Faça nosso tutorial
   [Automatize o monitoramento com o provedor Datadog do Terraform](/terraform/tutorials/applications/datadog-provider)
-  para implantar uma aplicação Nginx de demonstração em um cluster Kubernetes
+  para implantar uma aplicação NGINX de demonstração em um cluster Kubernetes
   com o Helm e instalar o agente Datadog em todo o cluster.
   O agente Datadog reporta a integridade do cluster para o seu dashboard do
   Datadog.
@@ -88,7 +88,7 @@ provisionar os servidores web que dependem dela.
 
 ## Clusters de autoatendimento
 
-Em uma grande organização, seu time de operações centralizado pode receber
+Em uma grande organização, seu time centralizado de operações pode receber
 muitas solicitações de infraestrutura repetitivas.
 Você pode usar o Terraform para criar um modelo de infraestrutura de
 "autoatendimento" que permite que os times de produto gerenciem sua própria
@@ -135,13 +135,13 @@ As políticas do Sentinel estão disponíveis no Terraform Enterprise e no
 
 ## Configuração de aplicações PaaS
 
-Plataformas como Serviço (PaaS) como o Heroku permitem que você crie aplicaçÕes
+Plataformas como serviço (PaaS) como o Heroku permitem que você crie aplicações
 web e adicione complementos, como bancos de dados ou provedores de e-mail.
 O Heroku pode escalar elasticamente o número de dynos ou workers, mas a maioria
 das aplicações mais complexas exige muitos complementos e serviços externos.
 Você pode usar o Terraform para codificar a configuração necessária para uma
 aplicação Heroku, configurar um DNSimple para definir um CNAME e configurar o
-Cloudflare como uma Rede de Distribuição de Conteúdo (CDN) para a aplicação.
+Cloudflare como uma rede de distribuição de conteúdo (CDN) para a aplicação.
 O Terraform pode fazer tudo isso de forma rápida e consistente, sem a
 necessidade de uma interface web.
 
@@ -153,7 +153,7 @@ para gerenciar o ciclo de vida de uma aplicação com o Terraform.
 
 ## Redes definidas por software
 
-O Terraform pode interagir com Redes Definidas por Software (SDNs) para
+O Terraform pode interagir com redes definidas por software (SDNs) para
 configurar automaticamente a rede conforme as necessidades das aplicações em
 execução.
 Isso permite migrar de um fluxo de trabalho baseado em tickets para um
@@ -165,7 +165,7 @@ Por exemplo, quando um serviço se registra no
 configuração do Terraform para expor as portas apropriadas e ajustar as
 configurações de rede para qualquer SDN que tenha um provedor Terraform
 associado.
-A Automação de Infraestrutura de Rede (NIA) permite aprovar com segurança as
+A automação de infraestrutura de rede (NIA) permite aprovar com segurança as
 alterações necessárias para suas aplicações, sem precisar traduzir manualmente
 os tickets das pessoas desenvolvedoras nas alterações que você considera
 necessárias para as aplicações.
@@ -173,12 +173,12 @@ necessárias para as aplicações.
 ### Recursos
 
 - Faça o tutorial
-  [Introdução à automação de infraestrutura de rede com Consul-Terraform-Sync](/consul/tutorials/network-infrastructure-automation/consul-terraform-sync-intro)
+  [Introdução à automação de infraestrutura de rede com o Consul-Terraform-Sync](/consul/tutorials/network-infrastructure-automation/consul-terraform-sync-intro)
   para instalar o Consul-Terraform-Sync em um nó.
-  Em seguida, você o configurará para se comunicar com um datacenter do Consul,
+  Em seguida, você o configurará para se comunicar com um data center do Consul,
   reagir a alterações de serviço e executar uma tarefa de exemplo.
 - Faça o tutorial
-  [Consul-Terraform-Sync e integração Terraform Enterprise/Cloud](/consul/tutorials/network-infrastructure-automation/consul-terraform-sync-terraform-enterprise)
+  [Consul-Terraform-Sync e integração com o Terraform Enterprise/Cloud](/consul/tutorials/network-infrastructure-automation/consul-terraform-sync-terraform-enterprise)
   para configurar o Consul-Terraform-Sync para interagir com o Terraform
   Enterprise e o HCP Terraform.
 
@@ -190,8 +190,8 @@ O Terraform permite implantar um cluster Kubernetes e gerenciar seus recursos
 (por exemplo, pods, deployments, serviços, etc.).
 Você também pode usar o
 [Operador HCP Terraform](https://github.com/hashicorp/hcp-terraform-operator)
-para gerenciar infraestrutura em nuvem e local por meio de uma Definição de
-Recurso Personalizado (CRD) do Kubernetes e do HCP Terraform.
+para gerenciar infraestrutura em nuvem e local por meio de uma definição de
+recurso personalizado (CRD) do Kubernetes e do HCP Terraform.
 
 ### Recursos
 
@@ -207,8 +207,8 @@ Recurso Personalizado (CRD) do Kubernetes e do HCP Terraform.
 
 ## Ambientes paralelos
 
-Você pode ter ambientes de staging ou de controle de qualidade que usa para
-testar novas aplicações antes de lançá-las em produção.
+Você pode ter ambientes de staging ou de QA que usa para testar novas aplicações
+antes de lançá-las em produção.
 À medida que o ambiente de produção cresce e se torna mais complexo, pode ser
 cada vez mais difícil manter um ambiente atualizado para cada etapa do processo
 de desenvolvimento.
