@@ -6,73 +6,84 @@
 # The original work was translated from English into Brazilian Portuguese.
 # https://github.com/hashicorp/terraform/blob/-/LICENSE
 
-page_title: Overview - Configuration Language
+source_url: https://github.com/hashicorp/web-unified-docs/blob/main/content/terraform/v1.14.x/docs/language/index.mdx
+revision: 110cc70f5ac401444bfe089dd5caa2f39038e2d7
+status: ready
+
+page_title: Visão geral - Linguagem de configuração
 description: >-
-  Use the Terraform configuration language to describe the infrastructure that Terraform manages.
+  Use a linguagem de configuração do Terraform para descrever a infraestrutura
+  que o Terraform gerencia.
 ---
 
-# Terraform Language Documentation
+# Documentação da linguagem do Terraform
 
-This is the documentation for Terraform's configuration language. It is relevant
-to users of [Terraform CLI](/terraform/cli),
-[HCP Terraform](https://cloud.hashicorp.com/products/terraform), and
-[Terraform Enterprise](/terraform/enterprise). Terraform's language is
-its primary user interface. Configuration files you write in Terraform
-language tell Terraform what plugins to install, what infrastructure to create,
-and what data to fetch. Terraform language also lets you define dependencies
-between resources and create multiple similar resources from a single
-configuration block.
+Esta é a documentação da linguagem de configuração do Terraform.
+Ela é relevante para pessoas usuárias do [Terraform CLI](/terraform/cli),
+[HCP Terraform](https://cloud.hashicorp.com/products/terraform) e
+[Terraform Enterprise](/terraform/enterprise).
+A linguagem do Terraform é sua principal interface de pessoa usuária.
+Os arquivos de configuração que você escreve na linguagem do Terraform informam
+ao Terraform quais plugins instalar, qual infraestrutura criar e quais dados
+buscar.
+A linguagem do Terraform também permite definir dependências entre recursos e
+criar vários recursos semelhantes a partir de um único bloco de configuração.
 
-> **Hands-on:** Try the [Write Terraform Configuration](/terraform/tutorials/configuration-language) tutorials.
+> **Prática:** Faça os tutoriais
+> [Escreva configuração do Terraform](/terraform/tutorials/configuration-language).
 
-## About the Terraform Language
+## Sobre a linguagem Terraform
 
-The main purpose of the Terraform language is declaring
-[resources](/terraform/language/resources), which represent infrastructure objects. All other
-language features exist only to make the definition of resources more flexible
-and convenient.
+O principal objetivo da linguagem Terraform é declarar
+[recursos](/terraform/language/resources), que representam objetos de
+infraestrutura.
+Todos os outros recursos da linguagem existem apenas para tornar a definição de
+recursos mais flexível e conveniente.
 
-A _Terraform configuration_ is a complete document in the Terraform language
-that tells Terraform how to manage a given collection of infrastructure. A
-configuration can consist of multiple files and directories.
+Uma _configuração Terraform_ é um documento completo na linguagem Terraform que
+informa ao Terraform como gerenciar uma determinada coleção de infraestrutura.
+Uma configuração pode consistir em vários arquivos e diretórios.
 
-The syntax of the Terraform language consists of only a few basic elements:
+A sintaxe da linguagem Terraform consiste em apenas alguns elementos básicos:
 
 ```hcl
 resource "aws_vpc" "main" {
   cidr_block = var.base_cidr_block
 }
 
-<BLOCK TYPE> "<BLOCK LABEL>" "<BLOCK LABEL>" {
-  # Block body
-  <IDENTIFIER> = <EXPRESSION> # Argument
+<TIPO DE BLOCO> "<RÓTULO DO BLOCO>" "<RÓTULO DO BLOCO>" {
+  # Corpo do bloco
+  <IDENTIFICADOR> = <EXPRESSÃO> # Argumento
 }
 ```
 
-- _Blocks_ are containers for other content and usually represent the
-  configuration of some kind of object, like a resource. Blocks have a
-  _block type,_ can have zero or more _labels,_ and have a _body_ that contains
-  any number of arguments and nested blocks. Most of Terraform's features are
-  controlled by top-level blocks in a configuration file.
-- _Arguments_ assign a value to a name. They appear within blocks.
-- _Expressions_ represent a value, either literally or by referencing and
-  combining other values. They appear as values for arguments, or within other
-  expressions.
+- _Blocos_ são contêineres para outros conteúdos e representam geralmente a
+  configuração de algum tipo de objeto, como um recurso.
+  Os blocos têm um _tipo de bloco_, podem ter zero ou mais _rótulos_ e têm um
+  _corpo_ que contém qualquer número de argumentos e blocos aninhados.
+  A maioria dos recursos do Terraform é controlada por blocos de nível superior
+  em um arquivo de configuração.
+- _Argumentos_ atribuem um valor a um nome.
+  Eles aparecem dentro de blocos.
+- _Expressões_ representam um valor, seja literalmente ou por meio de referência
+  e combinação de outros valores.
+  Elas aparecem como valores para argumentos ou dentro de outras expressões.
 
-The Terraform language is declarative, describing an intended goal rather than
-the steps to reach that goal. The ordering of blocks and the files they are
-organized into are generally not significant; Terraform only considers implicit
-and explicit relationships between resources when determining an order of
-operations.
+A linguagem Terraform é declarativa, descrevendo um objetivo pretendido em vez
+dos passos para atingir esse objetivo.
+A ordem dos blocos e dos arquivos nos quais eles são organizados geralmente não
+é significativa; o Terraform considera apenas relacionamentos implícitos e
+explícitos entre recursos ao determinar uma ordem de operações.
 
-### Example
+### Exemplo
 
-The following example describes a simple network topology for Amazon Web
-Services, just to give a sense of the overall structure and syntax of the
-Terraform language. Similar configurations can be created for other virtual
-network services, using resource types defined by other providers, and a
-practical network configuration will often contain additional elements not
-shown here.
+O exemplo a seguir descreve uma topologia de rede simples para a Amazon Web
+Services, apenas para dar uma ideia da estrutura e da sintaxe da linguagem
+Terraform.
+Configurações semelhantes podem ser criadas para outros serviços de rede
+virtual, usando tipos de recursos definidos por outros provedores, e uma
+configuração de rede prática geralmente conterá elementos adicionais não
+mostrados aqui.
 
 ```hcl
 terraform {
@@ -87,12 +98,12 @@ terraform {
 variable "aws_region" {}
 
 variable "base_cidr_block" {
-  description = "A /16 CIDR range definition, such as 10.1.0.0/16, that the VPC will use"
+  description = "Uma definição de intervalo CIDR /16, como 10.1.0.0/16, que a VPC utilizará."
   default = "10.1.0.0/16"
 }
 
 variable "availability_zones" {
-  description = "A list of availability zones in which to create subnets"
+  description = "Uma lista de zonas de disponibilidade nas quais criar sub-redes."
   type = list(string)
 }
 
@@ -101,26 +112,26 @@ provider "aws" {
 }
 
 resource "aws_vpc" "main" {
-  # Referencing the base_cidr_block variable allows the network address
-  # to be changed without modifying the configuration.
+  # Referenciar a variável base_cidr_block permite que o endereço de rede seja
+  # alterado sem modificar a configuração.
   cidr_block = var.base_cidr_block
 }
 
 resource "aws_subnet" "az" {
-  # Create one subnet for each given availability zone.
+  # Cria uma sub-rede para cada zona de disponibilidade especificada.
   count = length(var.availability_zones)
 
-  # For each subnet, use one of the specified availability zones.
+  # Para cada sub-rede, usa uma das zonas de disponibilidade especificadas.
   availability_zone = var.availability_zones[count.index]
 
-  # By referencing the aws_vpc.main object, Terraform knows that the subnet
-  # must be created only after the VPC is created.
+  # Ao referenciar o objeto aws_vpc.main, o Terraform sabe que a sub-rede deve
+  # ser criada somente após a criação da VPC.
   vpc_id = aws_vpc.main.id
 
-  # Built-in functions and operators can be used for simple transformations of
-  # values, such as computing a subnet address. Here we create a /20 prefix for
-  # each subnet, using consecutive addresses for each availability zone,
-  # such as 10.1.16.0/20 .
+  # Funções e operadores integrados podem ser usados para transformações simples
+  # de valores, como calcular um endereço de sub-rede.
+  # Aqui, criamos um prefixo /20 para cada sub-rede, usando endereços
+  # consecutivos para cada zona de disponibilidade, como 10.1.16.0/20.
   cidr_block = cidrsubnet(aws_vpc.main.cidr_block, 4, count.index+1)
 }
 ```
