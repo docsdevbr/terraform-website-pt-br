@@ -6,72 +6,134 @@
 # The original work was translated from English into Brazilian Portuguese.
 # https://github.com/hashicorp/terraform/blob/-/LICENSE
 
-layout: "intro"
-page_title: "Terraform Editions"
-sidebar_current: "what"
-description: |-
-   Learn how Terraform Community Edition, HCP Terraform, and Terraform Enterprise solve increasingly complex infrastructure and collaboration challenges.
+source_url: https://github.com/hashicorp/web-unified-docs/blob/main/content/terraform/v1.14.x/docs/intro/terraform-editions.mdx
+revision: 110cc70f5ac401444bfe089dd5caa2f39038e2d7
+status: ready
+
+layout: intro
+page_title: Edições do Terraform
+sidebar_current: what
+description: >-
+  Saiba como o Terraform Community Edition, o HCP Terraform e o Terraform
+  Enterprise resolvem desafios cada vez mais complexos de infraestrutura e
+  colaboração.
 ---
 
-# Terraform Editions Overview
+# Visão geral das edições do Terraform
 
-As your organization adopts infrastructure as code (IaC), you will encounter increasingly complex technical and collaboration challenges. We offer three Terraform editions designed to help you solve them.
+À medida que sua organização adota infraestrutura como código (IaC), você
+encontrará desafios técnicos e de colaboração cada vez mais complexos.
+Oferecemos três edições do Terraform projetadas para te ajudar a resolvê-los.
 
 ## Terraform Community Edition
 
-Terraform Community Edition is a free, downloadable tool that you interact with on the command line. It lets you provision infrastructure on any cloud provider and manages configuration, plugins, infrastructure, and state.
+O Terraform Community Edition é uma ferramenta gratuita para download com a qual
+você interage pela linha de comando.
+Ele permite provisionar infraestrutura em qualquer provedor de nuvem e gerenciar
+configuração, plugins, infraestrutura e estado.
 
-###  Why Terraform Community Edition?
+### Por que usar o Terraform Community Edition?
 
-Terraform Community Edition lets you:
+O Terraform Community Edition permite:
 
-- Adopt infrastructure as code and use a common configuration language to provision thousands of different types of resources and services.
-- Codify your infrastructure so that you can check configuration files into a version control system (VCS) to safely manage contributions. Manually pull the most up-to-date version to perform Terraform operations.
-- Use and publish public infrastructure templates called modules to implement industry and organization best practices, group your infrastructure into logically-related components, and deploy infrastructure more quickly.
+- Adotar infraestrutura como código e usar uma linguagem de configuração comum
+  para provisionar milhares de tipos diferentes de recursos e serviços;
+- Codificar sua infraestrutura para que você possa enviar arquivos de
+  configuração para um sistema de controle de versão (VCS) e gerenciar
+  contribuições com segurança.
+  Obtenha manualmente a versão mais atualizada para executar operações do
+  Terraform;
+- Utilize e publique modelos de infraestrutura pública, chamados módulos, para
+  implementar as melhores práticas da indústria e da organização, agrupar sua
+  infraestrutura em componentes logicamente relacionados e implantá-la mais
+  rapidamente.
 
+### Recursos
 
-### Resources
-
-- Get Started tutorials for popular providers: [Amazon Web Services](/terraform/tutorials/aws-get-started), [Azure](/terraform/tutorials/azure-get-started), [Google Cloud Platform](/terraform/tutorials/gcp-get-started), [Oracle Cloud Infrastructure](/terraform/tutorials/oci-get-started), and [Docker](/terraform/tutorials/docker-get-started)
-- [What is Terraform?](/terraform/intro)
-- [Configuration Language Documentation](/terraform/language)
-- [CLI Documentation](/terraform/cli)
+- Tutoriais de introdução para provedores populares:
+  [Amazon Web Services](/terraform/tutorials/aws-get-started),
+  [Azure](/terraform/tutorials/azure-get-started),
+  [Google Cloud Platform](/terraform/tutorials/gcp-get-started),
+  [Oracle Cloud Infrastructure](/terraform/tutorials/oci-get-started) e
+  [Docker](/terraform/tutorials/docker-get-started)
+- [O que é o Terraform?](/terraform/intro)
+- [Documentação da linguagem de configuração](/terraform/language)
+- [Documentação da CLI](/terraform/cli)
 
 ## HCP Terraform
 
-HCP Terraform is a SaaS application that runs Terraform in a stable, remote environment and securely stores state and secrets. It includes a rich user interface that helps you better understand your Terraform operations and resources, allows you to define role-based access controls, and offers a private registry for sharing modules and providers. HCP Terraform also integrates with the Terraform CLI and connects to common version control systems (VCS) like GitHub, GitLab, and Bitbucket. When you connect an HCP Terraform workspace to a VCS repository, new commits and changes can automatically trigger Terraform plans. HCP Terraform also offers an API, allowing you to integrate it into existing workflows.
+O HCP Terraform é uma aplicação SaaS que executa o Terraform em um ambiente
+remoto e estável, armazenando com segurança o estado e os segredos.
+Inclui uma interface de pessoa usuária rica que ajuda você a entender melhor
+suas operações e recursos do Terraform, permite definir controles de acesso
+baseados em funções e oferece um registro privado para compartilhamento de
+módulos e provedores.
+O HCP Terraform também se integra à CLI do Terraform e se conecta a sistemas de
+controle de versão (VCS) comuns, como GitHub, GitLab e Bitbucket.
+Ao conectar um espaço de trabalho do HCP Terraform a um repositório VCS, novos
+commits e alterações podem acionar automaticamente planos do Terraform.
+O HCP Terraform também oferece uma API, permitindo que você o integre a fluxos
+de trabalho existentes.
 
-Many HCP Terraform features are free for small teams; we offer paid plans for larger organizations with additional collaboration and governance features.
+Muitos recursos do HCP Terraform são gratuitos para times pequenos; oferecemos
+planos pagos para organizações maiores com recursos adicionais de colaboração e
+governança.
 
-###  Why HCP Terraform?
+### Por que usar o HCP Terraform?
 
-HCP Terraform lets you:
+O HCP Terraform permite que você:
 
-- Run Terraform from the local CLI or in a remote environment, trigger operations through your version control system, or use an API to integrate HCP Terraform into your existing workflows.
-- Ensure that only approved teams can access, edit, and provision infrastructure with HCP Terraform workspaces, single sign-on, and role-based access controls.
-- Securely store and version Terraform state remotely, with encryption at rest. Versioned state files allow you to access state file history.
-- Publish configuration modules in the HCP Terraform private registry that define approved infrastructure patterns. For example, a module may allow users to choose the cloud provider on which to deploy their Java application. This allows consumers to implement your organization’s best practices without becoming infrastructure or cloud experts.
-- Enforce best practices and security rules with the Sentinel embedded policy as code framework. For example, policies may restrict regions for production deployments.
+- Execute o Terraform a partir da CLI local ou em um ambiente remoto, acione
+  operações por meio do seu sistema de controle de versão ou use uma API para
+  integrar o HCP Terraform aos seus fluxos de trabalho existentes;
+- Garanta que apenas equipes aprovadas possam acessar, editar e provisionar
+  infraestrutura com os espaços de trabalho do Terraform do HCP, login único e
+  controles de acesso baseados em funções;
+- Armazene e versione o estado do Terraform remotamente com segurança, com
+  criptografia em repouso.
+  Os arquivos de estado versionados permitem acessar o histórico do arquivo de
+  estado;
+- Publique módulos de configuração no registro privado do Terraform do HCP que
+  definem padrões de infraestrutura aprovados.
+  Por exemplo, um módulo pode permitir que as pessoas usuárias escolham o
+  provedor de nuvem no qual implantar sua aplicação Java.
+  Isso permite que as pessoas consumidoras implementem as melhores práticas da
+  sua organização sem se tornarem especialistas em infraestrutura ou nuvem;
+- Aplique as melhores práticas e regras de segurança com a estrutura de política
+  como código integrada do Sentinel.
+  Por exemplo, as políticas podem restringir regiões para implantações de
+  produção.
 
-### Resources
+### Recursos
 
-- [Create an HCP Terraform Account](https://app.terraform.io/public/signup/account)
-- [HCP Terraform Documentation](/terraform/cloud-docs)
-- [Sentinel Documentation](/terraform/cloud-docs/policy-enforcement)
-- [Get Started - HCP Terraform](/terraform/tutorials/cloud-get-started) tutorials show you how to manage infrastructure using HCP Terraform's VCS integration
+- [Crie uma conta HCP Terraform](https://app.terraform.io/public/signup/account);
+- [Documentação do HCP Terraform](/terraform/cloud-docs);
+- [Documentação do Sentinel](/terraform/cloud-docs/policy-enforcement);
+- Os tutoriais
+  [Introdução - HCP Terraform](/terraform/tutorials/cloud-get-started)
+  mostram como gerenciar a infraestrutura usando a integração do HCP Terraform
+  com o VCS.
 
 ## Terraform Enterprise
 
-Terraform Enterprise allows you to set up a self-hosted distribution of HCP Terraform. It offers customizable resource limits and is ideal for organizations with strict security and compliance requirements.
+O Terraform Enterprise permite configurar uma distribuição autohospedada do HCP
+Terraform.
+Ele oferece limites de recursos personalizáveis e é ideal para organizações com
+requisitos rigorosos de segurança e conformidade.
 
-###  Why Terraform Enterprise?
+### Por que usar o Terraform Enterprise?
 
-Terraform Enterprise lets you:
+O Terraform Enterprise permite:
 
-- Set up a private instance of HCP Terraform with dedicated support from HashiCorp.
-- Accommodate advanced security and compliance requirements. Terraform Enterprise supports several types of installations, including air gapped and active/active architecture, and allows private networking and job scaling for better performance.
+- Configurar uma instância privada do HCP Terraform com suporte dedicado da
+  HashiCorp;
+- Atender a requisitos avançados de segurança e conformidade.
+  O Terraform Enterprise suporta diversos tipos de instalações, incluindo
+  arquiteturas isoladas da internet e ativas/ativas, e permite redes privadas e
+  escalonamento de tarefas para melhor desempenho.
 
-### Resources
-- [Terraform Pricing](https://www.hashicorp.com/products/terraform/pricing)
-- [Terraform Enterprise Documentation](/terraform/enterprise)
-- [Recommended Enterprise Patterns](/terraform/tutorials/recommended-patterns) guides
+### Recursos
+
+- [Preços do Terraform](https://www.hashicorp.com/products/terraform/pricing);
+- [Documentação do Terraform Enterprise](/terraform/enterprise);
+- Guias de [Padrões empresariais recomendados](/terraform/tutorials/recommended-patterns).
