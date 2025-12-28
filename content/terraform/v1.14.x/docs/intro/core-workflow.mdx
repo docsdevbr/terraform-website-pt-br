@@ -6,44 +6,51 @@
 # The original work was translated from English into Brazilian Portuguese.
 # https://github.com/hashicorp/terraform/blob/-/LICENSE
 
-page_title: Overview of the core Terraform workflow
-description: Learn how to provision and manage infrastructure using the core Terraform workflow for individuals, teams, and organizations.
+source_url: https://github.com/hashicorp/web-unified-docs/blob/main/content/terraform/v1.14.x/docs/intro/core-workflow.mdx
+revision: 110cc70f5ac401444bfe089dd5caa2f39038e2d7
+status: ready
+
+page_title: Visão geral do fluxo de trabalho principal do Terraform
+description: >-
+  Aprenda como provisionar e gerenciar infraestrutura usando o fluxo de trabalho
+  principal do Terraform individualmente e em times e organizações.
 ---
 
-# Core Terraform Workflow Overview
+# Visão geral do fluxo de trabalho principal do Terraform
 
-The core Terraform workflow has three steps:
+O fluxo de trabalho principal do Terraform tem três etapas:
 
-1. **Write** - Author infrastructure as code.
-1. **Plan** - Preview changes before applying.
-1. **Apply** - Provision reproducible infrastructure.
+1. **Escrita** - Crie infraestrutura como código.
+2. **Planejamento** - Visualize as alterações antes de aplicá-las.
+3. **Execução** - Provisione infraestrutura reproduzível.
 
-This guide walks through how each of these three steps plays out in the context
-of working as an individual practitioner, how they evolve when a team is
-collaborating on infrastructure, and how HCP Terraform enables this
-workflow to run smoothly for entire organizations.
+Este guia explica como cada uma dessas três etapas funciona no contexto do
+trabalho individual, como elas evoluem quando um time colabora na infraestrutura
+e como o HCP Terraform permite que esse fluxo de trabalho seja executado sem
+problemas para organizações inteiras.
 
-## Working as an Individual Practitioner
+## Trabalhando como profissional independente
 
-Let's first walk through how these parts fit together as an individual working
-on infrastructure as code.
+Vamos primeiro analisar como essas partes se encaixam quando você trabalha
+individualmente com infraestrutura como código.
 
-### Write
+### Escrita
 
-You write Terraform configuration just like you write code: in your editor of
-choice. It's common practice to store your work in a version controlled
-repository even when you're just operating as an individual.
+Você escreve a configuração do Terraform da mesma forma que escreve código: no
+seu editor de texto preferido.
+É uma prática comum armazenar seu trabalho em um repositório com controle de
+versão, mesmo quando você trabalha individualmente.
 
 ```sh
-# Create repository
+# Crie o repositório
 $ git init my-infra && cd my-infra
 
 Initialized empty Git repository in /.../my-infra/.git/
 
-# Write initial config
+# Escreva a configuração inicial
 $ vim main.tf
 
-# Initialize Terraform
+# Inicialize o Terraform
 $ terraform init
 
 Initializing provider plugins...
@@ -51,40 +58,41 @@ Initializing provider plugins...
 Terraform has been successfully initialized!
 ```
 
-As you make progress on authoring your config, repeatedly running plans can help
-flush out syntax errors and ensure that your config is coming together as you
-expect.
+À medida que você avança na criação da sua configuração, executar planos
+repetidamente pode ajudar a eliminar erros de sintaxe e garantir que sua
+configuração esteja sendo elaborada conforme o esperado.
 
 ```sh
-# Make edits to config
+# Faça alterações na configuração
 $ vim main.tf
 
-# Review plan
+# Revise o plano
 $ terraform plan
 
-# Make additional edits, and repeat
+# Faça edições adicionais e repita
 $ vim main.tf
 ```
 
-This parallels working on application code as an individual, where a tight
-feedback loop between editing code and running test commands is useful.
+Isso se assemelha ao trabalho individual no código de uma aplicação, onde um
+ciclo de feedback curto entre a edição do código e a execução de comandos de
+teste é útil.
 
-### Plan
+### Planejamento
 
-When the feedback loop of the Write step has yielded a change that looks good,
-it's time to commit your work and review the final plan.
+Quando o ciclo de feedback da etapa de escrita resultar em uma alteração
+satisfatória, é hora de fazer o commit do seu trabalho e revisar o plano final.
 
 ```sh
 $ git add main.tf
-$ git commit -m 'Managing infrastructure as code!'
+$ git commit -m 'Gerenciando infraestrutura como código!'
 
-[main (root-commit) f735520] Managing infrastructure as code!
+[main (root-commit) f735520] Gerenciando infraestrutura como código!
  1 file changed, 1 insertion(+)
 ```
 
-Because `terraform apply` will display a plan for confirmation before
-proceeding to change any infrastructure, that's the command you run for final
-review.
+Como o comando `terraform apply` exibirá um plano para confirmação antes de
+prosseguir com qualquer alteração na infraestrutura, esse é o comando que você
+executa para a revisão final.
 
 ```sh
 $ terraform apply
@@ -93,10 +101,10 @@ An execution plan has been generated and is shown below.
 # ...
 ```
 
-### Apply
+### Execução
 
-After one last check, you are ready to tell Terraform to provision real
-infrastructure.
+Após uma última verificação, você está pronta para instruir o Terraform a
+provisionar a infraestrutura real.
 
 ```sh
 Do you want to perform these actions?
@@ -110,36 +118,39 @@ Do you want to perform these actions?
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-At this point, it's common to push your version control repository to a remote
-location for safekeeping.
+Neste ponto, é comum fazer o push do seu repositório de controle de versão para
+um local remoto para mantê-lo em segurança.
 
 ```sh
 $ git remote add origin https://github.com/*user*/*repo*.git
 $ git push origin main
 ```
 
-This core workflow is a loop; the next time you want to make changes, you start
-the process over from the beginning.
+Este fluxo de trabalho principal é um ciclo; da próxima vez que você quiser
+fazer alterações, você inicia o processo novamente desde o início.
 
-Notice how closely this workflow parallels the process of writing application
-code or scripts as an individual? This is what we mean when we talk about
-Terraform enabling infrastructure as code.
+Percebe como esse fluxo de trabalho se assemelha ao processo de escrever código
+ou scripts de aplicações individualmente?
+É isso que queremos dizer quando falamos sobre o Terraform habilitando
+infraestrutura como código.
 
-## Working as a Team
+## Trabalhando em equipe
 
-Once multiple people are collaborating on Terraform configuration, new steps
-must be added to each part of the core workflow to ensure everyone is working
-together smoothly. You'll see that many of these steps parallel the workflow
-changes we make when we work on application code as teams rather than as
-individuals.
+Quando várias pessoas estão colaborando na configuração do Terraform, novas
+etapas devem ser adicionadas a cada parte do fluxo de trabalho principal para
+garantir que todas estejam trabalhando juntas sem problemas.
+Você verá que muitas dessas etapas são paralelas às mudanças de fluxo de
+trabalho que fazemos quando trabalhamos no código da aplicação em equipe, em vez
+de individualmente.
 
-### Write
+### Escrita
 
-While each individual on a team still makes changes to Terraform configuration
-in their editor of choice, they save their changes to version control _branches_
-to avoid colliding with each other's work. Working in branches enables team
-members to resolve mutually incompatible infrastructure changes using their
-normal merge conflict workflow.
+Embora cada pessoa do time ainda faça alterações na configuração do Terraform em
+seu editor de preferência, elas salvam suas alterações em _branches_ de controle
+de versão para evitar conflitos com o trabalho umas das outras.
+Trabalhar em branches permite que as pessoas do time resolvam alterações de
+infraestrutura mutuamente incompatíveis usando seu fluxo de trabalho normal de
+resolução de conflitos de merge.
 
 ```sh
 $ git checkout -b add-load-balancer
@@ -147,103 +158,115 @@ $ git checkout -b add-load-balancer
 Switched to a new branch 'add-load-balancer'
 ```
 
-Running iterative plans is still useful as a feedback loop while authoring
-configuration, though having each team member's computer able to run them
-becomes more difficult with time. As the team and the infrastructure grows, so
-does the number of sensitive input variables (e.g. API Keys, SSL Cert Pairs)
-required to run a plan.
+Executar planos iterativos ainda é útil como um ciclo de feedback durante a
+criação de configurações, embora ter o computador de cada pessoa do time capaz
+de executá-los torne-se mais difícil com o tempo.
+À medida que o time e a infraestrutura crescem, também aumenta o número de
+variáveis de entrada sensíveis (por exemplo, chaves de API, pares de
+certificados SSL) necessárias para executar um plano.
 
-To avoid the burden and the security risk of each team member arranging all
-sensitive inputs locally, it's common for teams to migrate to a model in which
-Terraform operations are executed in a shared Continuous Integration (CI)
-environment. The work needed to create such a CI environment is nontrivial, and
-is outside the scope of this core workflow overview, but a full deep dive on
-this topic can be found in our
-[Running Terraform in Automation](/terraform/tutorials/automation/automate-terraform?utm_source=WEBSITE&utm_medium=WEB_IO&utm_offer=ARTICLE_PAGE&utm_content=DOCS)
-guide.
+Para evitar o ônus e o risco de segurança de cada pessoa do time organizar todas
+as entradas sensíveis localmente, é comum que os times migrem para um modelo no
+qual as operações do Terraform são executadas em um ambiente de integração
+contínua (CI) compartilhado.
+O trabalho necessário para criar um ambiente de CI desse tipo não é trivial e
+está fora do escopo desta visão geral do fluxo de trabalho principal, mas um
+estudo sobre este tópico pode ser encontrado em nosso guia
+[Executando o Terraform em automação](/terraform/tutorials/automation/automate-terraform?utm_source=WEBSITE&utm_medium=WEB_IO&utm_offer=ARTICLE_PAGE&utm_content=DOCS).
 
-This longer iteration cycle of committing changes to version control and then
-waiting for the CI pipeline to execute is often lengthy enough to prohibit using
-speculative plans as a feedback loop while authoring individual Terraform
-configuration changes. Speculative plans are still useful before new Terraform
-changes are applied or even merged to the main development branch, however, as
-we'll see in a minute.
+Este ciclo de iteração mais longo de confirmar alterações no controle de versão
+e, em seguida, esperar que a esteira de CI seja executada, geralmente é longo o
+suficiente para impedir o uso de planos especulativos como um ciclo de feedback
+durante a criação de alterações de configuração individuais do Terraform.
+Os planos especulativos ainda são úteis antes que novas alterações do Terraform
+sejam aplicadas ou mesmo que seja feito o merge com o branch principal de
+desenvolvimento, como veremos em breve.
 
-### Plan
+### Planejamento
 
-For teams collaborating on infrastructure, Terraform's plan output creates an
-opportunity for team members to review each other's work. This allows the team
-to ask questions, evaluate risks, and catch mistakes before any potentially
-harmful changes are made.
+Para times que colaboram em infraestrutura, a saída do plano do Terraform cria
+uma oportunidade para que as pessoas do time revisem o trabalho umas das outras.
+Isso permite que o time faça perguntas, avalie riscos e identifique erros antes
+que quaisquer alterações potencialmente prejudiciais sejam feitas.
 
-The natural place for these reviews to occur is alongside pull requests within
-version control--the point at which an individual proposes a merge from their
-working branch to the shared team branch. If team members review proposed
-config changes alongside speculative plan output, they can evaluate whether the
-intent of the change is being achieved by the plan.
+O local natural para essas revisões ocorrerem é junto aos pull requests dentro
+do controle de versão — o ponto em que uma pessoa propõe um merge de seu branch
+de trabalho para o branch compartilhado do time.
+Se as pessoas do time revisarem as alterações de configuração propostas com a
+saída do plano especulativo, elas podem avaliar se a intenção da alteração está
+sendo alcançada pelo plano.
 
-The problem becomes producing that speculative plan output for the team to
-review. Some teams that still run Terraform locally make a practice that pull
-requests should include an attached copy of speculative plan output generated
-by the change author. Others arrange for their CI system to post speculative
-plan output to pull requests automatically.
+O problema se torna produzir essa saída do plano especulativo para o time
+revisar.
+Alguns times que ainda executam localmente o Terraform adotam a prática de que
+os pull requests devem incluir uma cópia anexada da saída do plano especulativo
+gerada pela pessoa autora da alteração.
+Outros configuram seu sistema de CI para publicar a saída do plano especulativo
+nos pull requests automaticamente.
 
-![Screenshot of Pull Request with manually posted Terraform plan output](/img/docs/manually-pasted-plan-output.png)
+![Captura de tela do pull request com saída do plano Terraform postada manualmente](/img/docs/manually-pasted-plan-output.png)
 
-In addition to reviewing the plan for the proper expression of its author's
-intent, the team can also make an evaluation whether they want this change to
-happen now. For example, if a team notices that a certain change could result
-in service disruption, they may decide to delay merging its pull request until
-they can schedule a maintenance window.
+Além de revisar o plano para verificar se ele expressa adequadamente a intenção
+da pessoa autora, o time também pode avaliar se deseja que essa alteração seja
+implementada imediatamente.
+Por exemplo, se um time perceber que uma determinada alteração pode resultar em
+interrupção do serviço, ela pode decidir adiar o merge do pull request até que
+possa agendar uma janela de manutenção.
 
-### Apply
+### Execução
 
-Once a pull request has been approved and merged, it's important for the team
-to review the final concrete plan that's run against the shared team branch and
-the latest version of the state file.
+Após um pull request ter sido aprovado e o merge ter sido feito, é importante
+que o time revise o plano concreto final executado no branch compartilhado do
+time e a versão mais recente do arquivo de estado.
 
-This plan has the potential to be different than the one reviewed on the pull
-request due to issues like merge order or recent infrastructural changes. For
-example, if a manual change was made to your infrastructure since the plan was
-reviewed, the plan might be different when you merge.
+Este plano pode ser diferente daquele revisado no pull request devido a
+problemas como a ordem de merge ou alterações recentes na infraestrutura.
+Por exemplo, se uma alteração manual foi feita na sua infraestrutura desde a
+revisão do plano, o plano pode ser diferente após o merge.
 
-It is at this point that the team asks questions about the potential
-implications of applying the change. Do we expect any service disruption from
-this change? Is there any part of this change that is high risk? Is there
-anything in our system that we should be watching as we apply this? Is there
-anyone we need to notify that this change is happening?
+É neste ponto que o time questiona as possíveis implicações da aplicação da
+alteração.
+Esperamos alguma interrupção de serviço devido a esta alteração?
+Existe alguma parte desta alteração que seja de alto risco?
+Há algo em nosso sistema que devemos monitorar durante a aplicação?
+Há alguém que precisamos notificar sobre a ocorrência desta alteração?
 
-Depending on the change, sometimes team members will want to watch the apply
-output as it is happening. For teams that are running Terraform locally, this
-may involve a screen share with the team. For teams running Terraform in CI,
-this may involve gathering around the build log.
+Dependendo da alteração, algumas pessoas do time podem querer acompanhar a saída
+da aplicação em tempo real.
+Para times que executam o Terraform localmente, isso pode envolver o
+compartilhamento de tela com o time.
+Para times que executam o Terraform em CI, isso pode envolver a análise do log
+de construção.
 
-Just like the workflow for individuals, the core workflow for teams is a loop
-that plays out for each change. For some teams this loop happens a few times a
-week, for others, many times a day.
+Assim como o fluxo de trabalho individual, o fluxo de trabalho principal para
+times é um ciclo que se repete a cada alteração.
+Para alguns times, esse ciclo ocorre algumas vezes por semana, para outros,
+várias vezes ao dia.
 
-## The Core Workflow Enhanced by HCP Terraform
+## O fluxo de trabalho principal aprimorado pelo HCP Terraform
 
-While the above described workflows enable the safe, predictable, and
-reproducible creating or changing of infrastructure, there are multiple
-collaboration points that can be streamlined, especially as teams and
-organizations scale.  We designed HCP Terraform to support and enhance
-the core Terraform workflow for anyone collaborating on infrastructure, from
-small teams to large organizations. Let's look at how HCP Terraform makes
-for a better experience at each step.
+Embora os fluxos de trabalho descritos acima permitam a criação ou alteração
+segura, previsível e reproduzível de infraestrutura, existem vários pontos de
+colaboração que podem ser simplificados, especialmente à medida que times e
+organizações crescem.
+Projetamos o HCP Terraform para oferecer suporte e aprimorar o fluxo de trabalho
+principal do Terraform para qualquer pessoa que colabore em infraestrutura,
+desde pequenos times até grandes organizações.
+Vamos ver como o HCP Terraform proporciona uma experiência melhor em cada etapa.
 
-### Write
+### Escrita
 
-HCP Terraform provides a centralized and secure location for storing
-input variables and state while also bringing back a tight feedback loop for
-speculative plans for config authors. Terraform configuration can interact with
-HCP Terraform through the [CLI integration](/terraform/cli/cloud).
+O HCP Terraform fornece um local centralizado e seguro para armazenar variáveis
+de entrada e estado, além de oferecer um ciclo de feedback eficiente para planos
+especulativos para pessoas autoras de configuração.
+A configuração do Terraform pode interagir com o HCP Terraform por meio da
+[integração com a CLI](/terraform/cli/cloud).
 
 ```hcl
 terraform {
   cloud {
     organization = "my-org"
-    hostname = "app.terraform.io" # Optional; defaults to app.terraform.io
+    hostname = "app.terraform.io" # Opcional; o padrão é app.terraform.io
 
     workspaces {
       tags = {
@@ -251,17 +274,18 @@ terraform {
         source = "cli"
       }
 
-      # For terraform versions below 1.10, you must specify key-only tags
-      # using a list of strings. Example:
+      # Para versões do Terraform anteriores à 1.10, você deve especificar tags
+      # somente com chaves usando uma lista de strings. Exemplo:
       # tags = ["networking", "source:cli"]
     }
   }
 }
 ```
 
-After you configure the integration, an HCP Terraform API key is all your team members need to edit config and run speculative plans
-against the latest version of the state file using all the remotely stored
-input variables.
+Após configurar a integração, uma chave de API do Terraform do HCP é tudo o que
+as pessoas do seu time precisam para editar a configuração e executar planos
+especulativos contra a versão mais recente do arquivo de estado usando todas as
+variáveis de entrada armazenadas remotamente.
 
 ```sh
 $ terraform workspace select my-app-dev
@@ -282,47 +306,50 @@ Refreshing Terraform state in-memory prior to plan...
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
 
-With the assistance of this plan output, team members can each work on
-authoring config until it is ready to propose as a change via a pull request.
+Com a ajuda deste plano de execução, as pessoas do time podem trabalhar na
+criação da configuração até que ela esteja pronta para ser proposta como uma
+alteração por meio de um de pull request.
 
-### Plan
+### Planejamento
 
-Once a pull request is ready for review, HCP Terraform makes the process
-of reviewing a speculative plan easier for team members. First, the plan is
-automatically run when the pull request is created. Status updates to the pull
-request indicate while the plan is in progress.
+Assim que um pull request estiver pronto para revisão, o HCP Terraform facilita
+o processo de revisão de um plano especulativo para as pessaos do time.
+Primeiro, o plano é executado automaticamente quando o pull request é criado.
+As atualizações de status do pull request indicam o andamento do plano.
 
-Once the plan is complete, the status update indicates whether there were any
-changes in the speculative plan, right from the pull request view.
+Assim que o plano for concluído, a atualização de status indica se houve alguma
+alteração no plano especulativo, diretamente na visualização do pull request.
 
-![Screenshot of Pull Request with resource changes in the status update](/img/docs/pull-request.png)
+![Captura de tela de um pull request com alterações de recursos na atualização de status](/img/docs/pull-request.png)
 
-For certain types of changes, this information is all that's needed for a team
-member to be able to approve the pull request. When a teammate needs to do a
-full review of the plan, clicking the link to HCP Terraform brings up a
-view that allows them to quickly analyze the full plan details.
+Para certos tipos de alterações, essas informações são tudo o que uma pessoa do
+time precisa para aprovar o pull request.
+Quando uma pessoa do time precisa fazer uma revisão completa do plano, clicar no
+link para o HCP Terraform abre uma visualização que permite analisar rapidamente
+os detalhes completos do plano.
 
-![Screenshot of Pull Request run in HCP Terraform](/img/docs/pr-plan.png)
+![Captura de tela da execução do pull request no HCP Terraform](/img/docs/pr-plan.png)
 
-This page allows the reviewer to quickly determine if the plan is matching the
-config author's intent and evaluate the risk of the change.
+Esta página permite que a pessoa revisora determine rapidamente se o plano
+corresponde à intenção da pessoa autora da configuração e avalie o risco da
+alteração.
 
-### Apply
+### Execução
 
-After merge, HCP Terraform presents the concrete plan to the team for
-review and approval.
+Após o merge, o HCP Terraform apresenta o plano concreto ao time para revisão e
+aprovação.
 
-![Screenshot of concrete plan](/img/docs/concrete-plan.png)
+![Captura de tela do plano concreto](/img/docs/concrete-plan.png)
 
-The team can discuss any outstanding questions about the plan before the change
-is made.
+O time pode discutir quaisquer dúvidas pendentes sobre o plano antes da
+alteração ser feita.
 
-![Screenshot of back-and-forth in HCP Terraform comments](/img/docs/plan-comments.png)
+![Captura de tela da troca de informações nos comentários do HCP Terraform](/img/docs/plan-comments.png)
 
-Once the Apply is confirmed, HCP Terraform displays the progress live
-to anyone who'd like to watch.
+Assim que a execução for confirmada, o HCP Terraform exibirá o progresso ao vivo
+para qualquer pessoa que queira acompanhar.
 
-![Screenshot of in-progress Apply](/img/docs/in-progress-apply.png)
+![Captura de tela da execução em andamento](/img/docs/in-progress-apply.png)
 
 <!--
 
@@ -335,11 +362,13 @@ And after the change completes, the team can be notified of its outcome.
 
 -->
 
-## Conclusion
+## Conclusão
 
-There are many different ways to use Terraform: as an individual user, a single
-team, or an entire organization at scale. Choosing the best approach for the
-density of collaboration needed will provide the most return on your investment
-in the core Terraform workflow. For organizations using Terraform at scale,
-HCP Terraform introduces new layers that build on this core workflow to
-solve problems unique to teams and organizations.
+Existem muitas maneiras de usar o Terraform: individualmente, em um único time
+ou em uma organização inteira em grande escala.
+Escolher a melhor abordagem para a densidade de colaboração necessária
+proporcionará o maior retorno sobre o investimento no fluxo de trabalho
+principal do Terraform.
+Para organizações que usam o Terraform em grande escala, o HCP Terraform
+introduz novas camadas que se baseiam nesse fluxo de trabalho principal para
+resolver problemas exclusivos de times e organizações.

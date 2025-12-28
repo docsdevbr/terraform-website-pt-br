@@ -55,21 +55,21 @@ Splunk, DataDog e muitos outros.
 
 O fluxo de trabalho principal do Terraform consiste em três etapas:
 
-- **Escrever:** você define recursos, que podem estar distribuídos entre vários
+- **Escrita:** você define recursos, que podem estar distribuídos entre vários
   provedores e serviços de nuvem.
   Por exemplo, você pode criar uma configuração para implantar uma aplicação em
   máquinas virtuais em uma rede de Nuvem Privada Virtual (VPC) com grupos de
   segurança e um balanceador de carga.
-- **Planejar:** o Terraform cria um plano de execução descrevendo a
+- **Planejamento:** o Terraform cria um plano de execução descrevendo a
   infraestrutura que será criada, atualizada ou destruída com base na
   infraestrutura existente e na sua configuração.
-- **Aplicar:** após a aprovação, o Terraform executa as operações propostas na
+- **Execução:** após a aprovação, o Terraform executa as operações propostas na
   ordem correta, respeitando quaisquer dependências de recursos.
   Por exemplo, se você atualizar as propriedades de uma VPC e alterar o número
   de máquinas virtuais nessa VPC, o Terraform recriará a VPC antes de escalonar
   as máquinas virtuais.
 
-![O fluxo de trabalho do Terraform tem três etapas: escrever, planejar e aplicar](/img/docs/intro-terraform-workflow.png)
+![O fluxo de trabalho do Terraform tem três etapas: escrita, planejamento e execução](/img/docs/intro-terraform-workflow.png)
 
 ## Por que usar o Terraform?
 
