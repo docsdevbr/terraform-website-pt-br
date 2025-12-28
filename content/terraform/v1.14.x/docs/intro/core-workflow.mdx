@@ -58,7 +58,7 @@ Initializing provider plugins...
 Terraform has been successfully initialized!
 ```
 
-À medida que você avança na criação da sua configuração, executar planos
+À medida que você avança na criação da sua configuração, gerar planos
 repetidamente pode ajudar a eliminar erros de sintaxe e garantir que sua
 configuração esteja sendo elaborada conforme o esperado.
 
@@ -139,7 +139,7 @@ infraestrutura como código.
 Quando várias pessoas estão colaborando na configuração do Terraform, novas
 etapas devem ser adicionadas a cada parte do fluxo de trabalho principal para
 garantir que todas estejam trabalhando juntas sem problemas.
-Você verá que muitas dessas etapas são paralelas às mudanças de fluxo de
+Você verá que muitas dessas etapas são equivalentes às mudanças de fluxo de
 trabalho que fazemos quando trabalhamos no código da aplicação em equipe, em vez
 de individualmente.
 
@@ -174,10 +174,11 @@ está fora do escopo desta visão geral do fluxo de trabalho principal, mas um
 estudo sobre este tópico pode ser encontrado em nosso guia
 [Executando o Terraform em automação](/terraform/tutorials/automation/automate-terraform?utm_source=WEBSITE&utm_medium=WEB_IO&utm_offer=ARTICLE_PAGE&utm_content=DOCS).
 
-Este ciclo de iteração mais longo de confirmar alterações no controle de versão
-e, em seguida, esperar que a esteira de CI seja executada, geralmente é longo o
-suficiente para impedir o uso de planos especulativos como um ciclo de feedback
-durante a criação de alterações de configuração individuais do Terraform.
+Este ciclo de iteração mais longo de fazer o commit das alterações no controle
+de versão e, em seguida, esperar que a esteira de CI seja executada, geralmente
+é longo o suficiente para impedir o uso de planos especulativos como um ciclo de
+feedback durante a criação de alterações de configuração individuais do
+Terraform.
 Os planos especulativos ainda são úteis antes que novas alterações do Terraform
 sejam aplicadas ou mesmo que seja feito o merge com o branch principal de
 desenvolvimento, como veremos em breve.
@@ -210,7 +211,7 @@ Além de revisar o plano para verificar se ele expressa adequadamente a intenç�
 da pessoa autora, o time também pode avaliar se deseja que essa alteração seja
 implementada imediatamente.
 Por exemplo, se um time perceber que uma determinada alteração pode resultar em
-interrupção do serviço, ela pode decidir adiar o merge do pull request até que
+interrupção do serviço, ele pode decidir adiar o merge do pull request até que
 possa agendar uma janela de manutenção.
 
 ### Execução
@@ -224,15 +225,15 @@ problemas como a ordem de merge ou alterações recentes na infraestrutura.
 Por exemplo, se uma alteração manual foi feita na sua infraestrutura desde a
 revisão do plano, o plano pode ser diferente após o merge.
 
-É neste ponto que o time questiona as possíveis implicações da aplicação da
+É neste ponto que o time questiona as possíveis implicações da execução da
 alteração.
 Esperamos alguma interrupção de serviço devido a esta alteração?
 Existe alguma parte desta alteração que seja de alto risco?
-Há algo em nosso sistema que devemos monitorar durante a aplicação?
+Há algo em nosso sistema que devemos monitorar durante a execução?
 Há alguém que precisamos notificar sobre a ocorrência desta alteração?
 
 Dependendo da alteração, algumas pessoas do time podem querer acompanhar a saída
-da aplicação em tempo real.
+da execução em tempo real.
 Para times que executam o Terraform localmente, isso pode envolver o
 compartilhamento de tela com o time.
 Para times que executam o Terraform em CI, isso pode envolver a análise do log
@@ -306,9 +307,9 @@ Refreshing Terraform state in-memory prior to plan...
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
 
-Com a ajuda deste plano de execução, as pessoas do time podem trabalhar na
-criação da configuração até que ela esteja pronta para ser proposta como uma
-alteração por meio de um de pull request.
+Com a ajuda da saída deste plano, as pessoas do time podem trabalhar na criação
+da configuração até que ela esteja pronta para ser proposta como uma alteração
+por meio de um pull request.
 
 ### Planejamento
 
